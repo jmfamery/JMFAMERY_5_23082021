@@ -3,95 +3,147 @@
 <!-- Données de base -->
     <head>
         <meta charset="utf-8" />
-        <script src="https://kit.fontawesome.com/9cee28601f.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/style.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <title>Accueil : Orinoco</title>
     </head>
 
     <!-- Accueil -->
     <body>
         <!-- Header -->
-        <header class="header container-fluid">
-            <div class="row">
-                <a class="header__logo col-10" href="index.html">
-                    <img class="logo__image" src="../images/logo_orinoco.png" alt="logo orinoco">
-                </a>
-                <a class="header__produits col-1" href="#produits">
-                    <i class="fas fa-camera-retro"></i>
-                    Produits
-                </a>
-                <a class="header__panier col-1" href="panier.html">
-                    <i class="fas fa-shopping-basket"></i>
-                    Panier
-                </a>
+        <header class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-8">
+                        <a class="header__logo" href="index.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-cart3" viewBox="0 0 25 25">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg>
+                            Orinoco
+                        </a>
+                    </div>
+
+                    <div class="col-2 text-center">
+                        <a class="header__produits" href="#produits">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 25 25">
+                                <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                            </svg>
+                            Produits
+                        </a>
+                    </div>
+
+                    <div class="col-2 text-center">
+                        <a class="header__panier" href="panier.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 25 25">
+                                <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z"/>
+                            </svg>
+                            Panier
+                        </a>
+                    </div>
+                </div>             
             </div>
         </header>
 
         <!-- Bandeau -->
-        <section>
-            <h1>ORINOCO</h1>
-            <h2>Appareil photo vintage</h2>
+        <section class="bandeau">
+            <div class="container col-12 text-center">
+                <h1>Orinoco</h1>
+                <h2>Appareil photo vintage</h2>                
+            </div>
         </section>
 
         <!-- Appareils -->
         <section id="produits" class="appareils">
-            <div class="appareils__detail">
-                <h3 class="detail__nom">Zurss 50S</h3>
-                <img class="detail__image" src="../images/vcam_1.jpg" alt="produit-1">
-                <p class="detail__info">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <p class="detail__prix">499 €</p>
-                <a class="detail__lien" href="produit-1.html">Consulter</a>
-            </div>
-
-            <div class="appareils__detail">
-                <h3 class="detail__nom">Hirsch 400DTS</h3>
-                <img class="detail__image" src="../images/vcam_2.jpg" alt="produit-2">
-                <p class="detail__info">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <p class="detail__prix">3 099 €</p>
-                <a class="detail__lien" href="produit-2.html">Consulter</a>
-            </div>
-
-            <div class="appareils__detail">
-                <h3 class="detail__nom">Franck JS 105</h3>
-                <img class="detail__image" src="../images/vcam_3.jpg" alt="produit-3">
-                <p class="detail__info">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <p class="detail__prix">2 099 €</p>
-                <a class="detail__lien" href="produit-3.html">Consulter</a>
-            </div>
-
-            <div class="appareils__detail">
-                <h3 class="detail__nom">Kuros TTS</h3>
-                <img class="detail__image" src="../images/vcam_4.jpg" alt="produit-4">
-                <p class="detail__info">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <p class="detail__prix">1 599 €</p>
-                <a class="detail__lien" href="produit-4.html">Consulter</a>
-            </div>
-
-            <div class="appareils__detail">
-                <h3 class="detail__nom">Katatone</h3>
-                <img class="detail__image" src="../images/vcam_5.jpg" alt="produit-5">
-                <p class="detail__info">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <p class="detail__prix">599 €</p>
-                <a class="detail__lien" href="produit-5.html">Consulter</a>
+            <div class="container-fluid">
+                <div class="row justify-content-md-center">
+                    <div class="col-2 text-center">
+                        <div class="appareils__detail">
+                            <h3 class="detail__nom">Zurss 50S</h3>
+                            <span class="detail__image">
+                                <img class="img-fluid" src="../images/vcam_1.jpg" alt="produit-1">
+                            </span>
+                            <p class="detail__info">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <p class="detail__prix">499 €</p>
+                            <a class="detail__lien" href="produit-1.html">Consulter</a>
+                        </div>
+                    </div>
+    
+                    <div class="col-2 text-center">
+                        <div class="appareils__detail">
+                            <h3 class="detail__nom">Hirsch 400DTS</h3>
+                            <span class="detail__image">
+                                <img class="img-fluid" src="../images/vcam_2.jpg" alt="produit-2">
+                            </span>
+                            <p class="detail__info">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <p class="detail__prix">3 099 €</p>
+                            <a class="detail__lien" href="produit-2.html">Consulter</a>
+                        </div>
+                    </div>
+    
+                    <div class="col-2 text-center">
+                        <div class="appareils__detail">
+                            <h3 class="detail__nom">Franck JS 105</h3>
+                            <span class="detail__image">
+                                <img class="img-fluid" src="../images/vcam_3.jpg" alt="produit-3">
+                            </span>
+                            <p class="detail__info">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <p class="detail__prix">2 099 €</p>
+                            <a class="detail__lien" href="produit-3.html">Consulter</a>
+                        </div>
+                    </div>
+    
+                    <div class="col-2 text-center">
+                        <div class="appareils__detail">
+                            <h3 class="detail__nom">Kuros TTS</h3>
+                            <span class="detail__image">
+                                <img class="img-fluid" src="../images/vcam_4.jpg" alt="produit-4">
+                            </span>
+                            <p class="detail__info">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <p class="detail__prix">1 599 €</p>
+                            <a class="detail__lien" href="produit-4.html">Consulter</a>
+                        </div>
+                    </div>
+    
+                    <div class="col-2 text-center">
+                        <div class="appareils__detail">
+                            <h3 class="detail__nom">Katatone</h3>
+                            <span class="detail__image">
+                                <img class="img-fluid" src="../images/vcam_5.jpg" alt="produit-5">
+                            </span>
+                            <p class="detail__info">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <p class="detail__prix">599 €</p>
+                            <a class="detail__lien" href="produit-5.html">Consulter</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- footer -->
         <footer class="footer">
-            <p>Information légal</p>
-            <p>Contact</p>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <p>Information légal</p>
+                    </div>
+    
+                    <div class="col-6 text-center">
+                        <p>Contact</p>
+                    </div>
+                </div>
+            </div>
         </footer>
     </body>
 </html>

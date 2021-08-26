@@ -1,10 +1,6 @@
 .header {
-    height: 100px;
-    background-color: #f3e9f1;
-}
-
-.header__logo {
-    .logo__image{
-        height: 60px;
-    }
+    height: 80px;
+    padding: 20px 0;
+    background-color: $couleur-fond;
+    font-size: 2rem;
 }

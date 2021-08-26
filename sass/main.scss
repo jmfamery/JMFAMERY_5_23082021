@@ -1,1 +1,12 @@
+@import "./utils/variables";
+@import "./utils/parametres";
+
+@import "./Base/police";
+@import "./Base/typographie";
+
 @import "./layout/header";
+
+@import "./composant/bandeau";
+@import "./composant/appareils";
+
+@import "./layout/footer"
