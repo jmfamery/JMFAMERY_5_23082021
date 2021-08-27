@@ -1,6 +1,7 @@
 .header {
-    height: 80px;
-    padding: 20px 0;
     background-color: $couleur-fond;
-    font-size: 2rem;
+    &__text {
+        color: $couleur-text;
+        font-size: 2rem;
+    }
 }
