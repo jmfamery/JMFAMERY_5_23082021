@@ -1,7 +1,7 @@
 .appareils {
-    background-color: lighten($couleur-fond, 35%);
+    background-color: $couleur-fond-clair;
     padding-bottom: 30px;
     &__detail {
-        background-color: lighten($couleur-fond, 45%);
+        background-color: $couleur-fond-transparant;
     }
 }
