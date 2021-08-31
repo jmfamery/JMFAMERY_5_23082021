@@ -1,4 +1,6 @@
 $couleur-fond:#ae8964;
-$couleur-fond-clair: lighten($couleur-fond, 35%);
-$couleur-fond-transparant: lighten($couleur-fond, 45%);
+$couleur-fond-foncer: darken($couleur-fond, 20%);
+$couleur-fond-clair_v1: lighten($couleur-fond, 15%);
+$couleur-fond-clair_v2: lighten($couleur-fond, 30%);
+$couleur-fond-clair_v3: lighten($couleur-fond, 45%);
 $couleur-text:black;
