@@ -1,15 +1,20 @@
 {
-  "name": "orinoco",
+  "name": "orinoco-frontend",
   "version": "1.0.0",
-  "description": "orinoco : Vente d'appereil photo vitage",
-  "main": "server.js",
+  "description": "Frontend de l'application orinoco",
+  "main": "index.html",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --watch ./sass/main.scss:./css/style.css --style compressed"
   },
-  "author": "JM FAMERY",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmfamery/JMFAMERY_5_23082021.git"
+  },
+  "author": "JM Famery",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.4",
-    "uuid": "^3.3.2"
-  }
+  "bugs": {
+    "url": "https://github.com/jmfamery/JMFAMERY_5_23082021/issues"
+  },
+  "homepage": "https://github.com/jmfamery/JMFAMERY_5_23082021#readme"
 }

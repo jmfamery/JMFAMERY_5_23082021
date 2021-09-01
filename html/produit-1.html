@@ -86,30 +86,52 @@
 
     <!-- Produit -->
     <section class="produit">
-      <div class="container" style="min-height: 700px">
-        <div class="row">
-          <div class="col">
-            <h3 class="text-center">Zurss 50S</h3>
-          </div>
-          <div class="row">
-            <div class="col-10">
-              <img class="img-fluid" src="../images/vcam_1.jpg" alt="produit-1">
-            </div>
-  
-            <div class="col-2">
-              <p class="h-25">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <p class="h-25">499 €</p>
-              <div class="h-25">
-                <select class="" name="accessoire" id="accessoire-objectif">
-                  <option value="">Choisir son objectif</option>
-                  <option value="objectif-1">35mm 1.4</option>
-                  <option value="objectif-2">50mm 1.6</option>
-                </select>
+      <div class="container">
+        <div class="card border border-2 border-dark rounded-3">
+          <div class="produit__detail">
+            <div class="card-header text-center border-bottom-0">
+              <div class="row">
+                <div class="col">
+                    <h3 class="card-tilte mb-0">Zurss 50S</h3>
+                </div>
               </div>
-              <a class="h-25" href="panier.html">Panier</a>
+            </div>
+
+            <div class="card-body pt-0 pb-0">
+              <div class="produit__body">
+                <div class="row">
+                  <div class="col-9">
+                    <img class="img-fluid" src="../images/vcam_1.jpg" alt="produit-1">
+                  </div>
+        
+                  <div class="col-3">
+                    <p class="h-25">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                      magna aliqua.
+                    </p>
+                    
+                    <div class="h-50 text-center">
+                      <select class="objectif" name="accessoire" id="accessoire-objectif">
+                        <option value="">Choisir son objectif</option>
+                        <option value="objectif-1">35mm 1.4</option>
+                        <option value="objectif-2">50mm 1.6</option>
+                      </select>
+                    </div>
+  
+                    <p class="h-25 text-center">499 €</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer border-top-0">
+              <div class="row">
+                <div class="col-9">
+                </div>
+                <div class="col-3 text-center">
+                  <a class="btn btn-dark" href="panier.html">Panier</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
