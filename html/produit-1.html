@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css" />
-
     <title>Orinoco : Zurss 50S</title>
   </head>
 
@@ -21,7 +19,7 @@
         <div class="container-fluid">
           <div class="row">
             <nav class="navbar navbar-expand-sm navbar-light">
-              <a class="navbar-brand" href="index.html">
+              <a class="navbar-brand" href="../index.html">
                 <span class="header__logo">
                   <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart3"
                     viewBox="0 0 20 20">
@@ -40,7 +38,7 @@
               <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="index.html #produits">
+                    <a class="nav-link" href="../index.html #produits">
                       <span class="header__menu">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                           class="bi bi-camera-fill" viewBox="0 0 20 20">
@@ -86,7 +84,7 @@
 
     <!-- Produit -->
     <section class="produit">
-      <div class="container">
+      <div class="container mb-3">
         <div class="card border border-2 border-dark rounded-3">
           <div class="produit__detail">
             <div class="card-header text-center border-bottom-0">
@@ -100,25 +98,30 @@
             <div class="card-body pt-0 pb-0">
               <div class="produit__body">
                 <div class="row">
-                  <div class="col-9">
-                    <img class="img-fluid" src="../images/vcam_1.jpg" alt="produit-1">
+                  <div class="col-xl-8 col-lg-7 col-md-12">
+                    <img class="img-fluid" src="http://localhost:3000/images/vcam_1.jpg" alt="produit-1">
                   </div>
         
-                  <div class="col-3">
-                    <p class="h-25">
+                  <div class="col-xl-4 col-lg-5 col-md-12">
+                    <p class="mb-3">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
                       magna aliqua.
                     </p>
                     
-                    <div class="h-50 text-center">
+                    <div class="mb-3 text-center">
                       <select class="objectif" name="accessoire" id="accessoire-objectif">
                         <option value="">Choisir son objectif</option>
                         <option value="objectif-1">35mm 1.4</option>
                         <option value="objectif-2">50mm 1.6</option>
                       </select>
                     </div>
+
+                    <div class="mb-3 text-center">
+                      <p>Nombre d'appareil photo</p>
+                      <input type="number" name="quantite" id="nombre" value="1" min="1">
+                    </div>
   
-                    <p class="h-25 text-center">499 €</p>
+                    <p class="mb-3 text-center">499 €</p>
                   </div>
                 </div>
               </div>
@@ -126,9 +129,9 @@
 
             <div class="card-footer border-top-0">
               <div class="row">
-                <div class="col-9">
+                <div class="col-xl-8 col-lg-7 col-md-12">
                 </div>
-                <div class="col-3 text-center">
+                <div class="col-xl-4 col-lg-5 col-md-12 text-center">
                   <a class="btn btn-dark" href="panier.html">Panier</a>
                 </div>
               </div>
@@ -155,14 +158,7 @@
     </footer>
   </main>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
-    integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-      integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
-      integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous">
-    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   </body>
 </html>
