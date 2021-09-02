@@ -1,12 +1,9 @@
 # Orinoco #
 
-This is the front end server for Project 5 of the Junior Web Developer path.
+Il s'agit du serveur frontal du Projet 5 du parcours Développeur Web.
 
-### Prerequisites ###
+### Conditions préalables ###
 
-You will need to have Node and `npm` installed locally on your machine.
+Vous aurez besoin d'avoir Node et `npm` installés localement sur votre machine.
 
-Launch back server, see explainations here https://github.com/OpenClassrooms-Student-Center/JWDP5.git
-
-### Installation ###
-
+Redémarrez le serveur, voir les explications ici https://github.com/OpenClassrooms-Student-Center/JWDP5.git

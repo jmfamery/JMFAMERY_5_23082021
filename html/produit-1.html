@@ -72,7 +72,7 @@
 
     <!-- Bandeau -->
     <section class="bandeau">
-      <div class="container-fluid text-center">
+      <div class="container text-center py-4">
         <div class="row">
           <div class="col">
             <h1>Orincamera</h1>
@@ -84,7 +84,7 @@
 
     <!-- Produit -->
     <section class="produit">
-      <div class="container mb-3">
+      <div class="container pb-5">
         <div class="card border border-2 border-dark rounded-3">
           <div class="produit__detail">
             <div class="card-header text-center border-bottom-0">
@@ -103,25 +103,26 @@
                   </div>
         
                   <div class="col-xl-4 col-lg-5 col-md-12">
-                    <p class="mb-3">
+                    <p class="mx-3 mb-3">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
                       magna aliqua.
                     </p>
                     
-                    <div class="mb-3 text-center">
-                      <select class="objectif" name="accessoire" id="accessoire-objectif">
-                        <option value="">Choisir son objectif</option>
+                    <div class="input-group px-3 mb-5">
+                      <label for="objectif" class="input-group-text text-white bg-dark" >Objectif :</label>
+                      <select class="form-select" id="objectif">
+                        <option selected>Choisir son objectif</option>
                         <option value="objectif-1">35mm 1.4</option>
                         <option value="objectif-2">50mm 1.6</option>
                       </select>
                     </div>
-
-                    <div class="mb-3 text-center">
-                      <p>Nombre d'appareil photo</p>
-                      <input type="number" name="quantite" id="nombre" value="1" min="1">
-                    </div>
   
-                    <p class="mb-3 text-center">499 €</p>
+                    <div class="input-group px-3 mb-5">
+                      <label for="nombre" class="input-group-text text-white bg-dark">Nombre d'appareil photo :</label>
+                      <input type="number" class="form-control" id="nombre" value="1" min="1" max="999">
+                    </div>
+
+                    <p class="mb-5 text-center">499 €</p>
                   </div>
                 </div>
               </div>
@@ -144,7 +145,7 @@
 
     <!-- footer -->
     <footer class="footer">
-      <div class="container-fluid">
+      <div class="container-fluid py-3">
         <div class="row">
           <div class="col-6 text-center">
             <p>Information légal</p>
