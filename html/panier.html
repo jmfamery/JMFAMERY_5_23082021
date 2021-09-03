@@ -2,18 +2,16 @@
 <html lang="fr">
 
 <!-- Données de base -->
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/style.css" />
-  <title>Orinoco : Zurss 50S</title>
+  <title>Orinoco : Panier</title>
 </head>
 
 <!-- Accueil -->
-
 <body>
   <main role="main">
     <!-- Header -->
@@ -74,11 +72,11 @@
 
     <!-- Bandeau -->
     <section class="bandeau">
-      <div class="container-fluid text-center">
+      <div class="container text-center py-4">
         <div class="row">
           <div class="col">
             <h1>Orincamera</h1>
-            <h2>Panier d'Appareils photo</h2>
+            <h2>Panier des appareils photo</h2>
           </div>
         </div>
       </div>
@@ -86,35 +84,164 @@
 
     <!-- Panier -->
     <section class="panier">
-      <div class="panier__titres">
-        <p>Produit</p>
-        <p>Accessoire</p>
-        <p>Prix</p>
-      </div>
+      <div class="container pb-5">
+        <div class="card border border-2 border-dark rounded-3">
+          <div class="panier__detail">
+            <div class="card-header text-center border-bottom-0 pb-0">
+              <div class="row g-3">
+                <div class="col-3">
+                  <h3>Produit</h3>
+                </div>
 
-      <div class="panier__detail">
-        <p>Nom</p>
-        <p>objectif</p>
-        <P>Valeur</P>
-      </div>
+                <div class="col-3">
+                  <h3>Accessoire</h3>
+                </div>
 
-      <div class="panier__total">
-        <p>Total</p>
-        <p>Total des valeurs</p>
-      </div>
+                <div class="col-2">
+                  <h3>Quantité</h3>
+                </div>
 
-      <a class="panier__commande" href="commande.html">Commander</a>
+                <div class="col-3">
+                  <h3>Montant</h3>
+                </div>
+
+                <div class="col-1">
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body text-center pb-0">
+              <div class="panier__body">
+                <div class="row g-3">
+                  <div class="col-3">
+                    <p>Zurss 50S</p>
+                  </div>
+  
+                  <div class="col-3">
+                    <p>35mm 1.4</p>
+                  </div>
+  
+                  <div class="col-2">
+                    <p>1</p>
+                  </div>
+  
+                  <div class="col-3">
+                    <p>499 €</p>
+                  </div>
+  
+                  <div class="col-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                      <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer text-center border-top-0 pb-0">
+              <div class="row g-3">
+                <div class="col-6">
+                </div>
+
+                <div class="col-2">
+                  <p>Total</p>
+                </div>
+
+                <div class="col-3">
+                  <p>499 €</p>
+                </div>
+
+                <div class="col-1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cordonnées -->
+    <section class="cordonnees">
+      <div class="container pb-5">
+        <div class="card border border-2 border-dark rounded-3">
+          <div class="cordonnees__detail">
+            <div class="card-header text-center border-bottom-0 pb-0">
+              <div class="row g-3">
+                <div class="col mt-2">
+                  <h3 class="text-center">Veuillez saisir vos cordonnées</p>
+                </div>
+              </div>
+            </div>
+            
+            <form class="cordonnees__saisie">
+              <div class="card-body pb-0">
+                <div class="cordonnees__body">
+                  <div class="row g-3 px-3">
+                    <div class="col-md-4">
+                      <label for="nom" class="form-label">Nom</label>
+                      <input type="text" class="form-control" id="nom" required>
+                    </div>
+  
+                    <div class="col-md-4">
+                      <label for="prenom" class="form-label">Prénom</label>
+                      <input type="text" class="form-control" id="prenom" required>
+                    </div>
+  
+                    <div class="col-md-4">
+                      <label for="mail" class="form-label">Adresse mail</label>
+                      <div class="input-group">
+                        <span class="input-group-text" id="mail2">@</span>
+                        <input type="text" class="form-control" id="mail"  aria-describedby="mail2" required>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-6">
+                      <label for="adresse" class="form-label">Adresse</label>
+                      <input type="text" class="form-control" id="adresse" required>
+                    </div>
+  
+                    <div class="col-md-2">
+                      <label for="code-postal" class="form-label">Code postal</label>
+                      <input type="number" class="form-control" id="code-postal" required>
+                    </div>
+  
+                    <div class="col-md-4">
+                      <label for="ville" class="form-label">Ville</label>
+                      <input type="text" class="form-control" id="ville" required>
+                    </div>
+  
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="accepter" required>
+                        <label class="form-check-label" for="accepter">
+                          Accepter les termes et conditions
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="card-footer text-center border-top-0 pb-0 my-3">
+                <button class="btn btn-dark" type="submit">Soumettre le formulaire</button>
+                <a class="btn btn-dark" href="commande.html">Commander</a>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- footer -->
     <footer class="footer">
-      <div class="container-fluid">
+      <div class="container-fluid py-3">
         <div class="row">
-          <div class="col-6 text-center">
+          <div class="col-6 text-center pt-3">
             <p>Information légal</p>
           </div>
 
-          <div class="col-6 text-center">
+          <div class="col-6 text-center pt-3">
             <p>Contact</p>
           </div>
         </div>
