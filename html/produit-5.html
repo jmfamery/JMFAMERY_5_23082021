@@ -1,52 +1,166 @@
 <!doctype html>
 <html lang="fr">
-<!-- Données de base -->
-    <head>
-        <meta charset="utf-8" />
-        <script src="https://kit.fontawesome.com/9cee28601f.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="../css/style.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-        <title>Orinoco : x</title>
-    </head>
 
-    <!-- Accueil -->
-    <body>
-        <!-- Header -->
-        <header class="header">
-            <a class="header__logo" href="../index.html">
-                <img src="../images/logo_orinoco.png" alt="logo orinoco">
-            </a>
-            <a class="header__produits" href="../index.html #produits">
-                <i class="fas fa-camera-retro"></i>
-                Produits
-            </a>
-            <a class="header__panier" href="panier.html">
-                <i class="fas fa-shopping-basket"></i>
-                Panier
-            </a>
-        </header>
+  <!-- Données de base -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Orinoco : Katatone</title>
+  </head>
 
-        <!-- Produit -->
-        <section class="produit">
-            <img class="produit__image" src="http://localhost:3000/images/vcam_5.jpg" alt="produit-5"> 
-            <h3 class="produit__nom">x</h3>
-            <p class="produit__info">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <p class="produit__prix">x €</p>
-            <select class="produit__accessoire" name="accessoire" id="accessoire-objectif">
-                <option value="">Choisir son objectif</option>
-                <option value="objectif-1">x</option>
-                <option value="objectif-2">x</option>
-            </select>
-            <a class="produit__panier" href="panier.html">Panier</a>
-        </section>
+  <!-- Accueil -->
+  <body>
+    <main role="main">
+      <!-- Header -->
+      <header class="header fond">
+        <div class="container-fluid">
+          <div class="row">
+            <nav class="navbar navbar-expand-sm navbar-light">
+              <a class="navbar-brand" href="../index.html">
+                <span class="header__logo">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart3"
+                    viewBox="0 0 20 20">
+                    <path
+                      d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                  </svg>
+                  Orinoco
+                </span>
+              </a>
 
-        <!-- footer -->
-        <footer class="footer">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../index.html #produits">
+                      <span class="header__menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                          class="bi bi-camera-fill" viewBox="0 0 20 20">
+                          <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                          <path
+                            d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" />
+                        </svg>
+                        Produits
+                      </span>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="panier.html">
+                      <span class="header__menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                          class="bi bi-basket2-fill" viewBox="0 0 20 20">
+                          <path
+                            d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z" />
+                        </svg>
+                        Panier
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+    <!-- Bandeau -->
+    <section class="bandeau fond-clair-v1">
+      <div class="container text-center py-4">
+        <div class="row">
+          <div class="col">
+            <h1>Oricamera</h1>
+            <h2>Descriptif de l'appareil photo</h2>
+          </div>
+        </div>
+      </div>
+    </section>  
+
+    <!-- Produit -->
+    <section class="produit fond-clair-v1">
+      <div class="container pb-5">
+        <div class="card border border-2 border-dark rounded-3">
+          <div class="produit__detail fond-clair-v2">
+            <div class="card-header text-center border-bottom-0">
+              <div class="row">
+                <div class="col">
+                    <h3 class="card-tilte mb-0">Katatone</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body pt-0 pb-0">
+              <div class="produit__body fond-clair-v3">
+                <div class="row">
+                  <div class="col-xxl-8 col-xl-7 col-lg-6 col-md-12">
+                    <img class="img-fluid" src="http://localhost:3000/images/vcam_5.jpg" alt="produit-5">
+                  </div>
+        
+                  <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-12">
+                    <p class="mx-3 my-3">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                      magna aliqua.
+                    </p>
+                    
+                    <div class="input-group px-3 mb-3">
+                      <label for="objectif" class="input-group-text text-white bg-dark" >Objectif</label>
+                      <select class="form-select text-center" id="objectif">
+                        <option selected>Choisir son objectif</option>
+                        <option value="objectif-1">50mm 1.4</option>
+                        <option value="objectif-2">35mm 1.8</option>
+                        <option value="objectif-3">28-200mm 2.8/4.5</option>
+                      </select>
+                    </div>
+  
+                    <div class="input-group px-3 mb-3">
+                      <label for="quantite" class="input-group-text text-white bg-dark">Quantité</label>
+                      <input type="number" class="form-control text-center" id="quantite" value="1">
+                    </div>
+
+                    <p class="mb-3 text-center">599 €</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer border-top-0">
+              <div class="row">
+                <div class="col-xl-8 col-lg-7 col-md-12">
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-12 text-center">
+                  <a class="btn btn-dark" href="panier.html">Panier</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- footer -->
+    <footer class="footer fond">
+      <div class="container-fluid py-3">
+        <div class="row">
+          <div class="col-6 text-center pt-3">
             <p>Information légal</p>
+          </div>
+
+          <div class="col-6 text-center pt-3">
             <p>Contact</p>
-        </footer>
-    </body>
-</html>  
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  </body>
+</html>

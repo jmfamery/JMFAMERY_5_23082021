@@ -1,12 +1,10 @@
 .header {
-    background-color: $couleur-fond;
+    color: $couleur-text;
     &__logo {
-        color: $couleur-text;
         font-size: 2.5rem;
     }
 
     &__menu {
-        color: $couleur-text;
         font-size: 1.5rem;
     }
 }
