@@ -1,6 +1,6 @@
 import { Camera } from "../modeles/camera.js";
 
-export async function getAllCameras() {
+export async function getDesCameras() {
     let response = await fetch('http://localhost:3000/api/cameras');
 
     let camerasDonnees = await response.json();
@@ -12,9 +12,16 @@ export async function getAllCameras() {
     return cameras;
 }
 
+export async function getUneCamera(id){
+    let response = await fetch('http://localhost:3000/api/cameras');
 
-export async function getOneCamera(id){
-  // TODO
+    let cameraDonnees = await response.json();
+    let camera = `5be1ed3f1c9d44000030b061`;
+    cameraDonnees => {
+        let camara = new Camera(cameraDonnees);
+        camera.push(camera);
+    };
+    return camera;
 }
 
 
