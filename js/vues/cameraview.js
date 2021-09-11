@@ -1,5 +1,5 @@
 export function afficherDesCameras(camera) {
-  let template = `<div class="card border border-2 border-dark rounded-3">
+  let index = `<div class="card border border-2 border-dark rounded-3">
     <div class="fond-clair-v2">
       <div class="card-header text-center border-bottom-0">
         <div class="police2-gras">
@@ -32,12 +32,12 @@ export function afficherDesCameras(camera) {
 
   let div = document.createElement('div');
   div.classList.add('col-lg-4','col-md-6')
-  div.innerHTML = template;
+  div.innerHTML = index;
   return div;
 }
 
 export function afficherUneCamera(camera) {
-  let template = `<div class="card border border-2 border-dark rounded-3">
+  let produit = `<div class="card border border-2 border-dark rounded-3">
     <div class="fond-clair-v2">
       <div class="card-header text-center border-bottom-0">
         <div class="row">
@@ -64,9 +64,9 @@ export function afficherUneCamera(camera) {
                   <label for="objectif" class="input-group-text text-white bg-dark" >Objectif</label>
                   <select class="form-select text-center" id="lentilles">
                     <option selected>Choisir son objectif</option>
-                    <option value="objectif-1">${camera.lenses}</option>
-                    <option value="objectif-2">${camera.lenses}</option>
-                    <option value="objectif-3">${camera.lenses}</option>
+                    <option value="objectif-1">${camera.lenses[0]}</option>
+                    <option value="objectif-2">${camera.lenses[1]}</option>
+                    <option value="objectif-3">${camera.lenses[2]}</option>
                   </select>
                 </div>
 
@@ -95,6 +95,6 @@ export function afficherUneCamera(camera) {
   </div>`;
 
   let div = document.createElement('div');
-  div.innerHTML = template;
+  div.innerHTML = produit;
   return div;
 }

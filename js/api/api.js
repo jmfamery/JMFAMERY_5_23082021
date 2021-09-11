@@ -5,26 +5,25 @@ export async function getDesCameras() {
 
     let camerasDonnees = await response.json();
     let cameras = [];
+    console.log(camerasDonnees)
     camerasDonnees.forEach(cameraDonnees => {
         let camera = new Camera(cameraDonnees);
+        let reference = camera._id
+        console.log(reference)
         cameras.push(camera);
     });
     return cameras;
 }
 
-export async function getUneCamera(id){
+export async function getUneCamera(_id){
     let response = await fetch('http://localhost:3000/api/cameras');
 
     let cameraDonnees = await response.json();
-    let camera = `5be1ed3f1c9d44000030b061`;
-    cameraDonnees => {
-        let camara = new Camera(cameraDonnees);
-        camera.push(camera);
-    };
+    console.log(cameraDonnees[1])
+    let camera = new Camera(cameraDonnees[1]);
     return camera;
 }
 
-
-export async function commander(contact, products){
+export async function commander(_contact, _products){
     // TODO
 }
