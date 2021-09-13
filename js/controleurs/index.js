@@ -1,4 +1,4 @@
-import {afficherDesCameras} from "../vues/cameraview.js"
+import {afficherDesCameras} from "../vues/indexvues.js"
 import {getDesCameras} from "../api/api.js"
 
 getDesCameras().then((cameras) => {
