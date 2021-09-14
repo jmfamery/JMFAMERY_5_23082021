@@ -1,4 +1,4 @@
-export function afficherUneCamera(camera) {
+export function afficherUnAppareilPhoto(camera) {
     let produit = `<div class="card border border-2 border-dark rounded-3">
       <div class="fond-clair-v2">
         <div class="card-header text-center border-bottom-0">

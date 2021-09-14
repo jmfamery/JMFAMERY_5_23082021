@@ -1,4 +1,4 @@
-export function afficherDesCameras(camera) {
+export function afficherDesAppareilsPhoto(camera) {
   let index = `<div class="card border border-2 border-dark rounded-3">
     <div class="fond-clair-v2">
       <div class="card-header text-center border-bottom-0">
@@ -34,7 +34,7 @@ export function afficherDesCameras(camera) {
   console.log(numero);
 
   let div = document.createElement('div');
-  div.classList.add('col-lg-4','col-md-6');
+  div.classList.add('col-lg-4', 'col-md-6');
   div.innerHTML = index;
   return div;
 }

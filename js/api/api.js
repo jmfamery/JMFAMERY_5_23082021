@@ -1,6 +1,6 @@
 import { Camera } from "../modeles/camera.js";
 
-export async function getDesCameras() {
+export async function getAllCameras() {
     let response = await fetch('http://localhost:3000/api/cameras');
 
     let camerasDonnees = await response.json();
@@ -16,7 +16,7 @@ export async function getDesCameras() {
     return cameras;
 }
 
-export async function getUneCamera(_id){
+export async function getOneCamera(_id){
     let response = await fetch('http://localhost:3000/api/cameras');
 
     let cameraDonnees = await response.json();
@@ -59,7 +59,7 @@ export async function getPanierTotal(_panier){
     return camera;
 }
 
-export async function getCommande(_contact, _products){
+export async function getCommandeDetail(_commande){
     let response = await fetch('http://localhost:3000/api/cameras');
 
     let camerasDonnees = await response.json();
@@ -77,3 +77,26 @@ export async function getCommande(_contact, _products){
     });
     return cameras;
 }
+
+export async function getCommandeTotal(_commande){
+    let response = await fetch('http://localhost:3000/api/cameras');
+
+    let cameraDonnees = await response.json();
+    let id = 0
+    console.log(id)
+    console.log(cameraDonnees[id])
+    let camera = new Camera(cameraDonnees[id]);
+    console.log(camera._id)
+    return camera;
+}
+
+export async function OrderCameras(_contact, _products){
+
+}
+
+function getId() {
+    return URL(window.location.search).searchParams('id')
+  }
+  
+let Id = getId
+console.log("id ",Id)

@@ -1,7 +1,7 @@
-import {afficherUneCamera} from "../vues/produitvues.js"
-import {getUneCamera} from "../api/api.js"
+import {afficherUnAppareilPhoto} from "../vues/produitvues.js"
+import {getOneCamera} from "../api/api.js"
 
-getUneCamera().then((camera) => {
-    document.getElementById("appareil").appendChild(afficherUneCamera(camera))
+getOneCamera().then((camera) => {
+    document.getElementById("appareil").appendChild(afficherUnAppareilPhoto(camera))
     }
 )
