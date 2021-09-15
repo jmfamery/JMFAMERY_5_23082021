@@ -1,7 +1,21 @@
-import {afficherUnAppareilPhoto} from "../vues/produitvues.js"
-import {getOneCamera} from "../api/api.js"
+import {
+  afficherUnAppareilPhoto
+} from "../vues/produitvues.js"
+import {
+  getOneCamera
+} from "../api/api.js"
+// import {Panier} from "../modeles/panier.js"
 
-getOneCamera().then((camera) => {
-    document.getElementById("appareil").appendChild(afficherUnAppareilPhoto(camera))
-    }
-)
+function getUrlIdParam() {
+  let params = (new URL(document.location)).searchParams;
+  let id = params.get('id');
+  return id;
+}
+
+let cameraId = getUrlIdParam();
+
+// let panier = new Panier();
+
+getOneCamera(cameraId).then((camera) => {
+  document.getElementById("appareil").appendChild(afficherUnAppareilPhoto(camera)) //derrier camera: , panier//
+})

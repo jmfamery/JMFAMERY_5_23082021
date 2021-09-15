@@ -1,5 +1,23 @@
-export function afficherUnAppareilPhoto(camera) {
-    let produit = `<div class="card border border-2 border-dark rounded-3">
+function selectionObjectif(camera) {
+
+  let objectifElt = document.createElement('select');
+  objectifElt.classList.add('form-select', 'text-center');
+
+  let defaultOptionElt = document.createElement('option');
+  defaultOptionElt.innerText = "Choisir son objectif";
+  objectifElt.appendChild(defaultOptionElt)
+
+  camera.lenses.forEach((lense) => {
+    let optionElt = document.createElement('option');
+    optionElt.innerText = lense;
+    optionElt.value = lense;
+    objectifElt.appendChild(optionElt)
+  })
+  return objectifElt;
+}
+
+export function afficherUnAppareilPhoto(camera, panier) {
+  let produit = `<div class="card border border-2 border-dark rounded-3">
       <div class="fond-clair-v2">
         <div class="card-header text-center border-bottom-0">
           <div class="row">
@@ -24,12 +42,8 @@ export function afficherUnAppareilPhoto(camera) {
                   
                   <div class="input-group px-3 mb-3">
                     <label for="objectif" class="input-group-text text-white bg-dark" >Objectif</label>
-                    <select class="form-select text-center" id="lentilles">
-                      <option selected>Choisir son objectif</option>
-                      <option value="objectif-1">${camera.lenses[0]}</option>
-                      <option value="objectif-2">${camera.lenses[1]}</option>
-                      <option value="objectif-3">${camera.lenses[2]}</option>
-                    </select>
+                    <div class ="produit-selection-objectif">
+                    </div>                                        
                   </div>
   
                   <div class="input-group px-3 mb-3">
@@ -40,7 +54,7 @@ export function afficherUnAppareilPhoto(camera) {
                   <p class="mb-3 text-center">${camera.priceDev}</p>
                 
                   <div class="text-center px-3 mb-3">
-                    <a class="btn btn-dark" href="#">Ajouter au panier</a>
+                    <button class="btn btn-dark" id="ajouter-au-panier-btn">Ajouter au panier</button>
                   </div>
                 </div>
               </div>
@@ -60,8 +74,20 @@ export function afficherUnAppareilPhoto(camera) {
         </div>
       </div>
     </div>`;
-  
-    let div = document.createElement('div');
-    div.innerHTML = produit;
-    return div;
-  }
+
+  let div = document.createElement('div');
+  div.innerHTML = produit;
+
+  let selectElt = selectionObjectif(camera);
+  div.querySelector('.produit-selection-objectif').appendChild(selectElt)
+
+  let ajouterAuPanierBtn = div.querySelector('#ajouter-au-panier-btn');
+
+  ajouterAuPanierBtn.addEventListener('click', () => {
+    console.log(camera, selectElt.value);
+    panier.ajouterProduit(camera, selectElt.value, 1);
+    alert("Quoi faire ?")
+  })
+
+  return div;
+}

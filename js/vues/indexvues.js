@@ -18,7 +18,7 @@ export function afficherDesAppareilsPhoto(camera) {
         <div class="card-footer px-4 border-top-0">
           <div class="row">
             <div class="col-6">
-              <a class="btn btn-dark" href="html/produit.html">Consulter</a>
+              <a class="btn btn-dark" href="html/produit.html?id=${camera._id}">Consulter</a>
             </div>
 
             <div class="col-6">
@@ -29,9 +29,6 @@ export function afficherDesAppareilsPhoto(camera) {
       </div>
     </div>
   </div>`;
-
-  let numero = camera._id;
-  console.log(numero);
 
   let div = document.createElement('div');
   div.classList.add('col-lg-4', 'col-md-6');
