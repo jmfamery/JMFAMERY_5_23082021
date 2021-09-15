@@ -1,16 +1,10 @@
 import {commandeDetail} from "../vues/commandevues.js"
-import {getCommandeDetail} from "../api/api.js"
+import {commandeTotal} from "../vues/commandevues.js"
+import {getCommande} from "../api/api.js"
 
-getCommandeDetail().then((cameras) => {
+getCommande().then((cameras) => {
     cameras.forEach(camera => {
         document.getElementById("commande-detail").appendChild(commandeDetail(camera));
     });
+    document.getElementById("commande-total").appendChild(commandeTotal(cameras))
 })
-
-import {commandeTotal} from "../vues/commandevues.js"
-import {getCommandeTotal} from "../api/api.js"
-
-getCommandeTotal().then((camera) => {
-    document.getElementById("commande-total").appendChild(commandeTotal(camera))
-    }
-)

@@ -38,7 +38,7 @@ export function commandeTotal(camera) {
         </div>
 
         <div class="col-3">
-          <p>499 €</p>
+          <p>${camera.totalprice}</p>
         </div>
       </div>
     </div>

@@ -48,7 +48,7 @@ export function panierTotal(camera) {
       </div>
 
       <div class="col-3 pt-2">
-        <p class="police2-gras">499 €</p>
+        <p class="police2-gras">${camera.totalprice}</p>
       </div>
 
       <div class="col-1">
