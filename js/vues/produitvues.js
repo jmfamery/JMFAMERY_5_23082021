@@ -3,14 +3,16 @@ function selectionObjectif(camera) {
   let objectifElt = document.createElement('select');
   objectifElt.classList.add('form-select', 'text-center');
 
-  let defaultOptionElt = document.createElement('option');
-  defaultOptionElt.innerText = "Choisir son objectif";
-  objectifElt.appendChild(defaultOptionElt)
+  // let defaultOptionElt = document.createElement('option');
+  // defaultOptionElt.innerText = "Choisir son objectif";
+  // objectifElt.appendChild(defaultOptionElt)
 
+  let numeroValue = 0
   camera.lenses.forEach((lense) => {
     let optionElt = document.createElement('option');
+    numeroValue ++;
     optionElt.innerText = lense;
-    optionElt.value = lense;
+    optionElt.value = numeroValue;
     objectifElt.appendChild(optionElt)
   })
   return objectifElt;
@@ -84,8 +86,9 @@ export function afficherUnAppareilPhoto(camera, panier) {
   let ajouterAuPanierBtn = div.querySelector('#ajouter-au-panier-btn');
 
   ajouterAuPanierBtn.addEventListener('click', () => {
-    console.log(camera, selectElt.value);
-    panier.ajouterProduit(camera, selectElt.value, 1);
+    let quantites = document.getElementById("quantite").value;
+    panier.ajouterProduit(camera, selectElt.value, quantites);
+    console.log(camera, selectElt.value, quantites);
     alert("Quoi faire ?")
   })
 

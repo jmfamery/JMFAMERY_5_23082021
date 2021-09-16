@@ -1,61 +1,67 @@
-import {Camera} from "../modeles/camera.js";
+import {
+  Camera
+} from "../modeles/camera.js";
 
 export async function getAllCameras() {
+  try {
     let response = await fetch('http://localhost:3000/api/cameras');
-    if (response.ok) {
-        let camerasDonnees = await response.json();
-        let cameras = [];
-        camerasDonnees.forEach(cameraDonnees => {
-            let camera = new Camera(cameraDonnees);
-            cameras.push(camera);
-        });
-        return cameras;
-    } 
-    else {
-        console.log("HTTP-Error: " + response.status);
-    }
+    let camerasDonnees = await response.json();
+    let cameras = [];
+    camerasDonnees.forEach(cameraDonnees => {
+      let camera = new Camera(cameraDonnees);
+      cameras.push(camera);
+    });
+    return cameras;
+  } catch (erreur) {
+    alert(erreur)
+  }
 }
 
 export async function getOneCamera(_id) {
+  try {
     let response = await fetch(`http://localhost:3000/api/cameras/${_id}`);
-    if (response.ok) {
-        let cameraDonnees = await response.json();
-        let camera = new Camera(cameraDonnees);
-        return camera;
-    }
-    else {
-        console.log("HTTP-Error: " + response.status);
-    }
+    let cameraDonnees = await response.json();
+    let camera = new Camera(cameraDonnees);
+    return camera;
+  } catch (erreur) {
+    alert(erreur)
+  }
 }
 
 export async function getPanier() {
+  try {
     let response = await fetch('http://localhost:3000/api/cameras');
-
     let camerasDonnees = await response.json();
     let cameras = [];
     let totalprice = 0;
     camerasDonnees.forEach(cameraDonnees => {
-        let camera = new Camera(cameraDonnees);
-        totalprice = totalprice + camera.price
-        console.log(totalprice)
-        cameras.push(camera);
+      let camera = new Camera(cameraDonnees);
+      totalprice = totalprice + camera.price
+      console.log(totalprice)
+      cameras.push(camera);
     });
     return cameras;
+  } catch (erreur) {
+    alert(erreur)
+  }
 }
 
 export async function getCommande() {
+  try {
     let response = await fetch('http://localhost:3000/api/cameras');
-
     let camerasDonnees = await response.json();
     let cameras = [];
     let totalprice = 0;
     camerasDonnees.forEach(cameraDonnees => {
-        let camera = new Camera(cameraDonnees);
-        totalprice = totalprice + camera.price
-        console.log(totalprice)
-        cameras.push(camera);
+      let camera = new Camera(cameraDonnees);
+      totalprice = totalprice + camera.price
+      console.log(totalprice)
+      cameras.push(camera);
     });
     return cameras;
+  } catch (erreur) {
+    alert(erreur)
+  }
 }
 
 export async function orderCameras(_contact, _products) {
