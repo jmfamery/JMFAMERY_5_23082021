@@ -22,7 +22,13 @@ export function afficherDesAppareilsPhoto(camera) {
             </div>
 
             <div class="col-6">
-              <p class="text-end mt-2 mb-0">${camera.priceDev}</p>
+              <p class="text-end mt-2 mb-0">
+                ${Intl.NumberFormat('fr-FR', {
+                  style: 'currency',
+                  currency: 'EUR',
+                  minimumFractionDigits: 0
+                }).format(camera.price / 100)}
+              </p>
             </div>
           </div>
         </div>

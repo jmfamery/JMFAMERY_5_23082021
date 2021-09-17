@@ -1,16 +1,15 @@
 function selectionObjectif(camera) {
-
   let objectifElt = document.createElement('select');
   objectifElt.classList.add('form-select', 'text-center');
 
-  // let defaultOptionElt = document.createElement('option');
-  // defaultOptionElt.innerText = "Choisir son objectif";
-  // objectifElt.appendChild(defaultOptionElt)
+  let defaultOptionElt = document.createElement('option');
+  defaultOptionElt.innerText = "Choisir son objectif";
+  objectifElt.appendChild(defaultOptionElt)
 
   let numeroValue = 0
   camera.lenses.forEach((lense) => {
     let optionElt = document.createElement('option');
-    numeroValue ++;
+    numeroValue++;
     optionElt.innerText = lense;
     optionElt.value = numeroValue;
     objectifElt.appendChild(optionElt)
@@ -43,9 +42,9 @@ export function afficherUnAppareilPhoto(camera, panier) {
                   <p class="mx-3 my-3">${camera.description}</p>
                   
                   <div class="input-group px-3 mb-3">
-                    <label for="objectif" class="input-group-text text-white bg-dark" >Objectif</label>
+                    <label for="objectif" class="input-group-text form-label text-white bg-dark" >Objectif</label>
                     <div class ="produit-selection-objectif">
-                    </div>                                        
+                    </div>                                      
                   </div>
   
                   <div class="input-group px-3 mb-3">
@@ -53,7 +52,19 @@ export function afficherUnAppareilPhoto(camera, panier) {
                     <input type="number" class="form-control text-center" id="quantite" value="1">
                   </div>
   
-                  <p class="mb-3 text-center">${camera.priceDev}</p>
+                  <p class="mb-3 text-center">
+                    Prix unitaire : 
+                    ${Intl.NumberFormat('fr-FR', {
+                      style: 'currency',
+                      currency: 'EUR',
+                      minimumFractionDigits: 0
+                    }).format(camera.price/100)}
+                  </p>
+
+                  <div class="mb-3 text-center">
+                    <p class="total-price">
+                    </p>
+                  </div>
                 
                   <div class="text-center px-3 mb-3">
                     <button class="btn btn-dark" id="ajouter-au-panier-btn">Ajouter au panier</button>
@@ -81,15 +92,41 @@ export function afficherUnAppareilPhoto(camera, panier) {
   div.innerHTML = produit;
 
   let selectElt = selectionObjectif(camera);
-  div.querySelector('.produit-selection-objectif').appendChild(selectElt)
+  div.querySelector('.produit-selection-objectif').appendChild(selectElt);
 
   let ajouterAuPanierBtn = div.querySelector('#ajouter-au-panier-btn');
-
   ajouterAuPanierBtn.addEventListener('click', () => {
+    if (selectElt.value > 0) {
+      let quantites = document.getElementById("quantite").value;
+      panier.ajouterProduit(camera, selectElt.value, quantites);
+      console.log(camera, selectElt.value, quantites);
+      alert("Quoi faire ?")
+    } else {
+      alert("Veuillez selectionner l'objectif")
+    }
+  })
+
+  let calculPriceKeybord = div.querySelector('#quantite');
+  calculPriceKeybord.addEventListener('keyup', () =>  {
     let quantites = document.getElementById("quantite").value;
-    panier.ajouterProduit(camera, selectElt.value, quantites);
-    console.log(camera, selectElt.value, quantites);
-    alert("Quoi faire ?")
+
+    function montantTotalPrice (camera) {
+      let montantPriceElt = document.createElement('div');
+      montantPriceElt.classList.add('mb-3', 'text-center');
+      
+      let calculPriceElt = document.createElement('p');
+      calculPriceElt.innerText = "Prix total : " + Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 0
+      }).format(camera.price * quantites/100);
+      montantPriceElt.appendChild(calculPriceElt)
+      return montantPriceElt
+    }
+
+    //montantPriceElt.removeChild(calculPriceElt)
+    let montantTotalElt = montantTotalPrice(camera);
+    div.querySelector('.total-price').appendChild(montantTotalElt);
   })
 
   return div;
