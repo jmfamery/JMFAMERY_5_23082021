@@ -100,33 +100,28 @@ export function afficherUnAppareilPhoto(camera, panier) {
       let quantites = document.getElementById("quantite").value;
       panier.ajouterProduit(camera, selectElt.value, quantites);
       console.log(camera, selectElt.value, quantites);
-      alert("Quoi faire ?")
+      //alert("Quoi faire ?")
     } else {
       alert("Veuillez selectionner l'objectif")
     }
   })
+  console.log(panier)
 
   let calculPriceKeybord = div.querySelector('#quantite');
   calculPriceKeybord.addEventListener('keyup', () =>  {
     let quantites = document.getElementById("quantite").value;
 
-    function montantTotalPrice (camera) {
-      let montantPriceElt = document.createElement('div');
-      montantPriceElt.classList.add('mb-3', 'text-center');
-      
-      let calculPriceElt = document.createElement('p');
-      calculPriceElt.innerText = "Prix total : " + Intl.NumberFormat('fr-FR', {
-        style: 'currency',
-        currency: 'EUR',
-        minimumFractionDigits: 0
-      }).format(camera.price * quantites/100);
-      montantPriceElt.appendChild(calculPriceElt)
-      return montantPriceElt
-    }
+    let montantPriceElt = document.createElement('div');
+    montantPriceElt.classList.add('mb-3', 'text-center');
 
-    //montantPriceElt.removeChild(calculPriceElt)
-    let montantTotalElt = montantTotalPrice(camera);
-    div.querySelector('.total-price').appendChild(montantTotalElt);
+    let calculPriceElt = document.createElement('div');
+    calculPriceElt.innerText = "Prix total : " + Intl.NumberFormat('fr-FR', {
+      style: 'currency',
+      currency: 'EUR',
+      minimumFractionDigits: 0
+    }).format(camera.price * quantites/100);
+
+    div.querySelector('.total-price').appendChild(calculPriceElt);
   })
 
   return div;
