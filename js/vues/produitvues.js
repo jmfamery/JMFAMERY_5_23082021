@@ -62,7 +62,8 @@ export function afficherUnAppareilPhoto(camera, panier) {
                   </p>
 
                   <div class="mb-3 text-center">
-                    <p class="total-price">
+                    <p>
+                      Prix total : 
                     </p>
                   </div>
                 
@@ -94,35 +95,47 @@ export function afficherUnAppareilPhoto(camera, panier) {
   let selectElt = selectionObjectif(camera);
   div.querySelector('.produit-selection-objectif').appendChild(selectElt);
 
-  let ajouterAuPanierBtn = div.querySelector('#ajouter-au-panier-btn');
-  ajouterAuPanierBtn.addEventListener('click', () => {
-    if (selectElt.value > 0) {
-      let quantites = document.getElementById("quantite").value;
-      panier.ajouterProduit(camera, selectElt.value, quantites);
-      console.log(camera, selectElt.value, quantites);
-      //alert("Quoi faire ?")
-    } else {
-      alert("Veuillez selectionner l'objectif")
-    }
-  })
-  console.log(panier)
+  let quantites = div.querySelector("#quantite").value
+  let totalPrice = Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 0
+  }).format(camera.price * quantites/100);
+  console.log(quantites, "V1 :", totalPrice)
 
   let calculPriceKeybord = div.querySelector('#quantite');
   calculPriceKeybord.addEventListener('keyup', () =>  {
-    let quantites = document.getElementById("quantite").value;
-
-    let montantPriceElt = document.createElement('div');
-    montantPriceElt.classList.add('mb-3', 'text-center');
-
-    let calculPriceElt = document.createElement('div');
-    calculPriceElt.innerText = "Prix total : " + Intl.NumberFormat('fr-FR', {
+    let quantites = div.querySelector("#quantite").value
+    let totalPrice = Intl.NumberFormat('fr-FR', {
       style: 'currency',
       currency: 'EUR',
       minimumFractionDigits: 0
     }).format(camera.price * quantites/100);
-
-    div.querySelector('.total-price').appendChild(calculPriceElt);
+    console.log(quantites, "V2 :", totalPrice)
   })
+  
+  let ajouterAuPanierBtn = div.querySelector('#ajouter-au-panier-btn');
+  ajouterAuPanierBtn.addEventListener('click', () => {
+    if (selectElt.value > 0) {
+      let quantites = document.getElementById("quantite").value;
+      // let selectionPanier = {
+      //   selection_id : camera._id,
+      //   selection_apareil : camera.name,
+      //   selection_objectif : selectElt.value,
+      //   selection_prix : camera.price,
+      //   selection_quantite : quantites
+      // }
+      // console.log(selectionPanier);
+
+      panier.ajouterProduit(camera, selectElt.value, quantites);
+      //alert("Quoi faire ?")
+
+      console.log("2 :", panier);
+    } else {
+      alert("Veuillez selectionner l'objectif")
+    }
+  })
+  console.log("1 :", panier)
 
   return div;
 }
