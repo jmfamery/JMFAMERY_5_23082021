@@ -6,7 +6,7 @@ function selectionObjectif(camera) {
   defaultOptionElt.innerText = "Choisir son objectif";
   objectifElt.appendChild(defaultOptionElt)
 
-  let numeroValue = 0
+  let numeroValue = -1
   camera.lenses.forEach((lense) => {
     let optionElt = document.createElement('option');
     numeroValue++;
@@ -17,7 +17,7 @@ function selectionObjectif(camera) {
   return objectifElt;
 }
 
-export function afficherUnAppareilPhoto(camera, panier) {
+export function afficherUnAppareilPhoto(camera) {
   let produit = `<div class="card border border-2 border-dark rounded-3">
       <div class="fond-clair-v2">
         <div class="card-header text-center border-bottom-0">
@@ -53,19 +53,12 @@ export function afficherUnAppareilPhoto(camera, panier) {
                   </div>
   
                   <p class="mb-3 text-center">
-                    Prix unitaire : 
                     ${Intl.NumberFormat('fr-FR', {
                       style: 'currency',
                       currency: 'EUR',
                       minimumFractionDigits: 0
                     }).format(camera.price/100)}
                   </p>
-
-                  <div class="mb-3 text-center">
-                    <p>
-                      Prix total : 
-                    </p>
-                  </div>
                 
                   <div class="text-center px-3 mb-3">
                     <button class="btn btn-dark" id="ajouter-au-panier-btn">Ajouter au panier</button>
@@ -95,47 +88,61 @@ export function afficherUnAppareilPhoto(camera, panier) {
   let selectElt = selectionObjectif(camera);
   div.querySelector('.produit-selection-objectif').appendChild(selectElt);
 
-  let quantites = div.querySelector("#quantite").value
-  let totalPrice = Intl.NumberFormat('fr-FR', {
-    style: 'currency',
-    currency: 'EUR',
-    minimumFractionDigits: 0
-  }).format(camera.price * quantites/100);
-  console.log(quantites, "V1 :", totalPrice)
-
-  let calculPriceKeybord = div.querySelector('#quantite');
-  calculPriceKeybord.addEventListener('keyup', () =>  {
-    let quantites = div.querySelector("#quantite").value
-    let totalPrice = Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: 0
-    }).format(camera.price * quantites/100);
-    console.log(quantites, "V2 :", totalPrice)
-  })
-  
   let ajouterAuPanierBtn = div.querySelector('#ajouter-au-panier-btn');
   ajouterAuPanierBtn.addEventListener('click', () => {
-    if (selectElt.value > 0) {
+    if (selectElt.value >= 0) {
       let quantites = document.getElementById("quantite").value;
-      // let selectionPanier = {
-      //   selection_id : camera._id,
-      //   selection_apareil : camera.name,
-      //   selection_objectif : selectElt.value,
-      //   selection_prix : camera.price,
-      //   selection_quantite : quantites
-      // }
-      // console.log(selectionPanier);
 
-      panier.ajouterProduit(camera, selectElt.value, quantites);
+      let panier = {
+        panier_id: camera._id,
+        panier_appareil: camera.name,
+        panier_objectif: selectElt.value,
+        panier_prix: camera.price,
+        panier_quantite: quantites
+      }
+      console.log(panier);
+
+      let totalPrice = Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 0
+      }).format(camera.price * quantites / 100);
+
+      let panierLocalStorage = JSON.parse(localStorage.getItem("panier"));
+
+      const popupConfirmation = () => {
+        if (window.confirm(`${quantites} Appareil(s) photo ${camera.name} objectif ${camera.lenses[selectElt.value]} pour ${totalPrice} a (ont) bien été ajouté(s) au panier.
+Consultez le panier cliquer sur OK ou revenir à la liste des produits cliquer sur Annuler`)) {
+          window.location.href = "panier.html";
+        } else {
+          window.location.href = "../index.html#produits"
+        }
+      }
+
+      const ajoutpanierLocalStorage = () => {
+        panierLocalStorage.push(panier);
+        localStorage.setItem("panier", JSON.stringify(panierLocalStorage));
+        popupConfirmation();
+      }
+
+      if (panierLocalStorage) {
+        ajoutpanierLocalStorage ();
+      } else {
+        panierLocalStorage = []
+        ajoutpanierLocalStorage ();
+      }
+
+      console.log(panierLocalStorage)
+
+      //panier.ajouterProduit(camera, selectElt.value, quantites);
       //alert("Quoi faire ?")
 
-      console.log("2 :", panier);
+      //console.log("2 :", panier);
     } else {
       alert("Veuillez selectionner l'objectif")
     }
   })
-  console.log("1 :", panier)
+  //console.log("1 :", panier)
 
   return div;
 }

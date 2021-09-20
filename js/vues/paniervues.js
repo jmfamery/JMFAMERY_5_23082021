@@ -1,13 +1,41 @@
-export function panierDetail(camera) {
-  let panierdetail = `<div class="card-body text-center pb-0">
+let panierLocalStorage = JSON.parse(localStorage.getItem("panier"));
+console.log(panierLocalStorage)
+console.log(panierLocalStorage[0].panier_appareil)
+
+const panierDetail = document.querySelector("#panier-detail")
+const panierTotal = document.querySelector("#panier-total")
+
+if (panierLocalStorage === null) {
+  const panierVideDetail = `<div class="card-body text-center pb-0">
+    <div class="fond-clair-v3 police2-gras">
+      <div class="row g-3">
+        <div class="col-12">
+          <p class="fs-5">Le panier est vide</p>
+        </div>
+      </div>
+    </div>
+  </div>`
+
+  const panierVideTotal = `<div class="card-footer text-center border-top-0 pb-0">
+    <div class="row g-3 py-2">
+      <div class="col">
+      </div>
+    </div>
+  </div>`
+
+  panierDetail.innerHTML = panierVideDetail
+  panierTotal.innerHTML = panierVideTotal
+  
+} else {
+  const panierPleinDetail = `<div class="card-body text-center pb-0">
     <div class="fond-clair-v3 police2-normal">
       <div class="row g-3">
         <div class="col-3">
-          <p>${camera.name}</p>
+          <p> ${panierLocalStorage[0].panier_appareil} </p>
         </div>
 
         <div class="col-3">
-          <p>${camera.lenses[0]}</p>
+          <p></p>
         </div>
 
         <div class="col-2">
@@ -15,7 +43,7 @@ export function panierDetail(camera) {
         </div>
 
         <div class="col-3">
-          <p>${camera.priceDev}</p>
+          <p></p>
         </div>
 
         <div class="col-1">
@@ -29,13 +57,7 @@ export function panierDetail(camera) {
     </div>
   </div>`;
 
-  let div = document.createElement('div');
-  div.innerHTML = panierdetail;
-  return div;
-}
-
-export function panierTotal(camera) {
-  let paniertotal = `<div class="card-footer text-center border-top-0 pb-0">
+  const panierPleinTotal = `<div class="card-footer text-center border-top-0 pb-0">
     <div class="row g-3 py-2">
       <div class="col-6">
         <div class="police2-normal">
@@ -48,7 +70,7 @@ export function panierTotal(camera) {
       </div>
 
       <div class="col-3 pt-2">
-        <p class="police2-gras">${camera.totalprice}</p>
+        <p class="police2-gras"></p>
       </div>
 
       <div class="col-1">
@@ -56,7 +78,6 @@ export function panierTotal(camera) {
     </div>
   </div>`;
 
-  let div = document.createElement('div');
-  div.innerHTML = paniertotal;
-  return div;
+  panierDetail.innerHTML = panierPleinDetail
+  panierTotal.innerHTML = panierPleinTotal
 }
