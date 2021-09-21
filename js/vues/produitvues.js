@@ -93,14 +93,14 @@ export function afficherUnAppareilPhoto(camera) {
     if (selectElt.value >= 0) {
       let quantites = document.getElementById("quantite").value;
 
-      let panier = {
-        panier_id: camera._id,
-        panier_appareil: camera.name,
-        panier_objectif: selectElt.value,
-        panier_prix: camera.price,
-        panier_quantite: quantites
+      let appareil = {
+        _id: camera._id,
+        name: camera.name,
+        lenses: camera.lenses[selectElt.value],
+        price: camera.price,
+        number: quantites
       }
-      console.log(panier);
+      console.log(appareil);
 
       let totalPrice = Intl.NumberFormat('fr-FR', {
         style: 'currency',
@@ -108,10 +108,10 @@ export function afficherUnAppareilPhoto(camera) {
         minimumFractionDigits: 0
       }).format(camera.price * quantites / 100);
 
-      let panierLocalStorage = JSON.parse(localStorage.getItem("panier"));
+      let Panier = JSON.parse(localStorage.getItem("panier"));
 
-      const popupConfirmation = () => {
-        if (window.confirm(`${quantites} Appareil(s) photo ${camera.name} objectif ${camera.lenses[selectElt.value]} pour ${totalPrice} a (ont) bien été ajouté(s) au panier.
+      const confirmation = () => {
+        if (window.confirm(`${appareil.number} Appareil(s) photo ${appareil.name} objectif ${appareil.lenses} pour ${totalPrice} a (ont) bien été ajouté(s) au panier.
 Consultez le panier cliquer sur OK ou revenir à la liste des produits cliquer sur Annuler`)) {
           window.location.href = "panier.html";
         } else {
@@ -119,20 +119,20 @@ Consultez le panier cliquer sur OK ou revenir à la liste des produits cliquer s
         }
       }
 
-      const ajoutpanierLocalStorage = () => {
-        panierLocalStorage.push(panier);
-        localStorage.setItem("panier", JSON.stringify(panierLocalStorage));
-        popupConfirmation();
+      const ajoutAuPanier = () => {
+        Panier.push(appareil);
+        localStorage.setItem("panier", JSON.stringify(Panier));
+        confirmation();
       }
 
-      if (panierLocalStorage) {
-        ajoutpanierLocalStorage ();
+      if (Panier) {
+        ajoutAuPanier ();
       } else {
-        panierLocalStorage = []
-        ajoutpanierLocalStorage ();
+        Panier = []
+        ajoutAuPanier ();
       }
 
-      console.log(panierLocalStorage)
+      console.log(Panier)
 
       //panier.ajouterProduit(camera, selectElt.value, quantites);
       //alert("Quoi faire ?")

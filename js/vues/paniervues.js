@@ -1,11 +1,10 @@
-let panierLocalStorage = JSON.parse(localStorage.getItem("panier"));
-console.log(panierLocalStorage)
-console.log(panierLocalStorage[0].panier_appareil)
+let Panier = JSON.parse(localStorage.getItem("panier"));
+console.log(Panier)
 
 const panierDetail = document.querySelector("#panier-detail")
 const panierTotal = document.querySelector("#panier-total")
 
-if (panierLocalStorage === null) {
+if (Panier === null) {
   const panierVideDetail = `<div class="card-body text-center pb-0">
     <div class="fond-clair-v3 police2-gras">
       <div class="row g-3">
@@ -18,10 +17,24 @@ if (panierLocalStorage === null) {
 
   const panierVideTotal = `<div class="card-footer text-center border-top-0 pb-0">
     <div class="row g-3 py-2">
-      <div class="col">
+      <div class="col-6">
+        <div class="police2-normal">
+          <a class="btn btn-dark" href="">Supprimer le panier</a>
+        </div>
+      </div>
+
+      <div class="col-2 pt-2">
+        <p class="police2-gras">Total</p>
+      </div>
+
+      <div class="col-3 pt-2">
+        <p class="police2-gras"></p>
+      </div>
+
+      <div class="col-1">
       </div>
     </div>
-  </div>`
+  </div>`;
 
   panierDetail.innerHTML = panierVideDetail
   panierTotal.innerHTML = panierVideTotal
@@ -31,19 +44,23 @@ if (panierLocalStorage === null) {
     <div class="fond-clair-v3 police2-normal">
       <div class="row g-3">
         <div class="col-3">
-          <p> ${panierLocalStorage[0].panier_appareil} </p>
+          <p>${Panier[0].name}</p>
         </div>
 
         <div class="col-3">
-          <p></p>
+          <p>${Panier[0].lenses}</p>
         </div>
 
         <div class="col-2">
-          <p>1</p>
+          <p>${Panier[0].number}</p>
         </div>
 
         <div class="col-3">
-          <p></p>
+          <p>${Intl.NumberFormat('fr-FR', {
+            style: 'currency',
+            currency: 'EUR',
+            minimumFractionDigits: 0
+          }).format(Panier[0].price * Panier[0].number / 100)}</p>
         </div>
 
         <div class="col-1">
