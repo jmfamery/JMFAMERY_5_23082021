@@ -17,7 +17,7 @@ function selectionObjectif(camera) {
   return objectifElt;
 }
 
-export function afficherUnAppareilPhoto(camera) {
+export function afficherUnAppareilPhoto(camera, panier) {
   let produit = `<div class="card border border-2 border-dark rounded-3">
       <div class="fond-clair-v2">
         <div class="card-header text-center border-bottom-0">

@@ -1,9 +1,9 @@
 import {
   Camera
 } from "../modeles/camera.js";
-// import {
-//   panier
-// } from "../vues/produitvues.js"
+import {
+  Panier
+} from "../modeles/panier.js"
 
 export async function getAllCameras() {
   try {

@@ -4,9 +4,9 @@ import {
 import {
   getOneCamera
 } from "../api/api.js"
-// import {
-//   Panier
-// } from "../modeles/panier.js"
+import {
+  Panier
+} from "../modeles/panier.js"
 
 function getUrlIdParam() {
   let params = (new URL(document.location)).searchParams;
@@ -16,8 +16,8 @@ function getUrlIdParam() {
 
 let cameraId = getUrlIdParam();
 
-// let panier = new Panier();
+let panier = new Panier;
 
 getOneCamera(cameraId).then((camera) => {
-  document.getElementById("appareil").appendChild(afficherUnAppareilPhoto(camera)) //Panier retirer derrier camera
+  document.getElementById("appareil").appendChild(afficherUnAppareilPhoto(camera, panier))
 })
