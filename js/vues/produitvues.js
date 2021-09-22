@@ -88,8 +88,8 @@ export function afficherUnAppareilPhoto(camera, panier) {
   let selectElt = selectionObjectif(camera);
   div.querySelector('.produit-selection-objectif').appendChild(selectElt);
 
-  let ajouterAuPanierBtn = div.querySelector('#ajouter-au-panier-btn');
-  ajouterAuPanierBtn.addEventListener('click', () => {
+  let ajouterAupanierBtn = div.querySelector('#ajouter-au-panier-btn');
+  ajouterAupanierBtn.addEventListener('click', () => {
     if (selectElt.value >= 0) {
       let quantites = document.getElementById("quantite").value;
 
@@ -108,7 +108,7 @@ export function afficherUnAppareilPhoto(camera, panier) {
         minimumFractionDigits: 0
       }).format(camera.price * quantites / 100);
 
-      let Panier = JSON.parse(localStorage.getItem("panier"));
+      let panier = JSON.parse(localStorage.getItem("panier"));
 
       const confirmation = () => {
         if (window.confirm(`${appareil.number} Appareil(s) photo ${appareil.name} objectif ${appareil.lenses} pour ${totalPrice} a (ont) bien été ajouté(s) au panier.
@@ -119,20 +119,20 @@ Consultez le panier cliquer sur OK ou revenir à la liste des produits cliquer s
         }
       }
 
-      const ajoutAuPanier = () => {
-        Panier.push(appareil);
-        localStorage.setItem("panier", JSON.stringify(Panier));
+      const ajoutAupanier = () => {
+        panier.push(appareil);
+        localStorage.setItem("panier", JSON.stringify(panier));
         confirmation();
       }
 
-      if (Panier) {
-        ajoutAuPanier ();
+      if (panier) {
+        ajoutAupanier ();
       } else {
-        Panier = []
-        ajoutAuPanier ();
+        panier = []
+        ajoutAupanier ();
       }
 
-      console.log(Panier)
+      console.log(panier)
 
       //panier.ajouterProduit(camera, selectElt.value, quantites);
       //alert("Quoi faire ?")

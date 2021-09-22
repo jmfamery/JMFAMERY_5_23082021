@@ -1,10 +1,10 @@
-let Panier = JSON.parse(localStorage.getItem("panier"));
-console.log(Panier)
+let panier = JSON.parse(localStorage.getItem("panier"));
+console.log(panier)
 
 const panierDetail = document.querySelector("#panier-detail")
 const panierTotal = document.querySelector("#panier-total")
 
-if (Panier === null || Panier == 0) {
+if (panier === null || panier == 0) {
   const panierVideDetail = `<div class="card-body text-center pb-0">
     <div class="fond-clair-v3 police2-gras">
       <div class="row g-3">
@@ -41,23 +41,23 @@ if (Panier === null || Panier == 0) {
 
 } else {
   let panierPleinDetail = []
-  let numeroPanier = 0
-  let totalPanier = 0
+  let numeropanier = 0
+  let totalpanier = 0
 
-  for (numeroPanier = 0; numeroPanier < Panier.length; numeroPanier++) {
+  for (numeropanier = 0; numeropanier < panier.length; numeropanier++) {
     panierPleinDetail = panierPleinDetail + `<div class="card-body text-center pb-0">
       <div class="fond-clair-v3 police2-normal">
         <div class="row g-3">
           <div class="col-3">
-            <p>${Panier[numeroPanier].name}</p>
+            <p>${panier[numeropanier].name}</p>
           </div>
 
           <div class="col-3">
-            <p>${Panier[numeroPanier].lenses}</p>
+            <p>${panier[numeropanier].lenses}</p>
           </div>
 
           <div class="col-2">
-            <p>${Panier[numeroPanier].number}</p>
+            <p>${panier[numeropanier].number}</p>
           </div>
 
           <div class="col-3">
@@ -65,7 +65,7 @@ if (Panier === null || Panier == 0) {
               style: 'currency',
               currency: 'EUR',
               minimumFractionDigits: 0
-            }).format(Panier[numeroPanier].price * Panier[numeroPanier].number / 100)}</p>
+            }).format(panier[numeropanier].price * panier[numeropanier].number / 100)}</p>
           </div>
 
           <div class="col-1">
@@ -82,19 +82,19 @@ if (Panier === null || Panier == 0) {
     </div>`;
   }
 
-  if (numeroPanier == Panier.length) {
+  if (numeropanier == panier.length) {
     panierDetail.innerHTML = panierPleinDetail
   }
 
-  for (numeroPanier = 0; numeroPanier < Panier.length; numeroPanier++) {
-    totalPanier = totalPanier + (Panier[numeroPanier].price * Panier[numeroPanier].number) / 100;
+  for (numeropanier = 0; numeropanier < panier.length; numeropanier++) {
+    totalpanier = totalpanier + (panier[numeropanier].price * panier[numeropanier].number);
   }
 
   const panierPleinTotal = `<div class="card-footer text-center border-top-0 pb-0">
     <div class="row g-3 py-2">
       <div class="col-6">
         <div class="police2-normal">
-          <a class="btn btn-dark" href="">Supprimer le panier</a>
+          <button class="btn btn-dark suppression-total">Supprimer le panier</button>
         </div>
       </div>
 
@@ -107,7 +107,7 @@ if (Panier === null || Panier == 0) {
           style: 'currency',
           currency: 'EUR',
           minimumFractionDigits: 0
-        }).format(totalPanier)}</p>
+        }).format(totalpanier / 100)}</p>
       </div>
 
       <div class="col-1">
@@ -115,7 +115,7 @@ if (Panier === null || Panier == 0) {
     </div>
   </div>`;
 
-  if (numeroPanier == Panier.length) {
+  if (numeropanier == panier.length) {
     panierTotal.innerHTML = panierPleinTotal
   }
 }
@@ -125,14 +125,25 @@ console.log(suppressionIndividuel)
 
 for (let suppression = 0; suppression < suppressionIndividuel.length; suppression++) {
   suppressionIndividuel[suppression].addEventListener('click', () => {
-    let idSuppression = Panier[suppression]._id;
+    let idSuppression = panier[suppression]._id;
     console.log(idSuppression)
 
-    Panier = Panier.filter(appareil => appareil._id !== idSuppression)
-    localStorage.setItem("panier", JSON.stringify(Panier));
+    panier = panier.filter(appareil => appareil._id !== idSuppression)
+    localStorage.setItem("panier", JSON.stringify(panier));
     alert("L'appareil a été supprimer")
-    window.location.href = "Panier.html"
+    window.location.href = "panier.html"
 
-    console.log(Panier)
+    console.log(panier)
+  })
+}
+
+let suppressionTotal = document.querySelector(".suppression-total")
+console.log(suppressionTotal)
+
+if (suppressionTotal !== null) {
+  suppressionTotal.addEventListener('click', () => {
+    localStorage.removeItem("panier");
+    alert("Le panier a été vidé")
+    window.location.href = "panier.html"
   })
 }
