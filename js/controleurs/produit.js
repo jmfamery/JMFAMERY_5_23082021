@@ -1,12 +1,6 @@
-import {
-  afficherUnAppareilPhoto
-} from "../vues/produitvues.js"
-import {
-  getOneCamera
-} from "../api/api.js"
-import {
-  Panier
-} from "../modeles/panier.js"
+import {afficherUnAppareilPhoto} from "../vues/produitvues.js"
+import {getOneCamera} from "../api/api.js"
+import {Panier} from "../modeles/panier.js"
 
 function getUrlIdParam() {
   let params = (new URL(document.location)).searchParams;
@@ -16,7 +10,7 @@ function getUrlIdParam() {
 
 let cameraId = getUrlIdParam();
 
-let panier = new Panier;
+let panier = new Panier();
 
 getOneCamera(cameraId).then((camera) => {
   document.getElementById("appareil").appendChild(afficherUnAppareilPhoto(camera, panier))

@@ -1,3 +1,8 @@
+//export function afficherUnAppareilPhoto(camera, panier) {
+//  genererUnAppareilPhoto(camera)
+//  alimentationPanier(panier)
+//}
+
 function selectionObjectif(camera) {
   let objectifElt = document.createElement('select');
   objectifElt.classList.add('form-select', 'text-center');
@@ -17,6 +22,7 @@ function selectionObjectif(camera) {
   return objectifElt;
 }
 
+//function genererUnAppareilPhoto(camera){
 export function afficherUnAppareilPhoto(camera, panier) {
   let produit = `<div class="card border border-2 border-dark rounded-3">
       <div class="fond-clair-v2">
@@ -87,7 +93,9 @@ export function afficherUnAppareilPhoto(camera, panier) {
 
   let selectElt = selectionObjectif(camera);
   div.querySelector('.produit-selection-objectif').appendChild(selectElt);
+  //}                
 
+  //function alimentationPanier(panier){
   let ajouterAupanierBtn = div.querySelector('#ajouter-au-panier-btn');
   ajouterAupanierBtn.addEventListener('click', () => {
     if (selectElt.value >= 0) {
@@ -102,47 +110,24 @@ export function afficherUnAppareilPhoto(camera, panier) {
       }
       console.log(appareil);
 
+      panier.ajouterUnProduit(appareil);
+
       let totalPrice = Intl.NumberFormat('fr-FR', {
         style: 'currency',
         currency: 'EUR',
         minimumFractionDigits: 0
       }).format(camera.price * quantites / 100);
 
-      let panier = JSON.parse(localStorage.getItem("panier"));
-
-      const confirmation = () => {
-        if (window.confirm(`${appareil.number} Appareil(s) photo ${appareil.name} objectif ${appareil.lenses} pour ${totalPrice} a (ont) bien été ajouté(s) au panier.
-Consultez le panier cliquer sur OK ou revenir à la liste des produits cliquer sur Annuler`)) {
-          window.location.href = "panier.html";
-        } else {
-          window.location.href = "../index.html#produits"
-        }
+      if (appareil.number == 1) {
+        alert(`L'appareil photo ${appareil.name}, objectif ${appareil.lenses} pour un montant de ${totalPrice} a bien été ajouté au panier.`);
+      }else {
+        alert(`Les ${appareil.number} appareils photo ${appareil.name}, objectif ${appareil.lenses} pour un montant de ${totalPrice} ont bien été ajoutés au panier.`);
       }
-
-      const ajoutAupanier = () => {
-        panier.push(appareil);
-        localStorage.setItem("panier", JSON.stringify(panier));
-        confirmation();
-      }
-
-      if (panier) {
-        ajoutAupanier ();
-      } else {
-        panier = []
-        ajoutAupanier ();
-      }
-
-      console.log(panier)
-
-      //panier.ajouterProduit(camera, selectElt.value, quantites);
-      //alert("Quoi faire ?")
-
-      //console.log("2 :", panier);
     } else {
       alert("Veuillez selectionner l'objectif")
     }
   })
-  //console.log("1 :", panier)
+  //}
 
   return div;
 }

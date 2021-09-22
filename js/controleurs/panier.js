@@ -1,17 +1,10 @@
-// import {panierDetail} from "../vues/paniervues.js"
-// import {panierTotal} from "../vues/paniervues.js"
-// import {getPanier} from "../api/api.js"
+import {Panier} from "../modeles/panier.js"
+import {afficherPanier} from "../vues/paniervues.js"
 
-// getPanier().then(() => {
-//     panier.forEach(panierLocalStorage => {
-//         document.getElementById("panier-detail").appendChild(panierDetail(panierLocalStorage));  
-//     });
-//     document.getElementById("panier-total").appendChild(panierTotal(panierLocalStorage));
-// })
+const panierDetailElt = document.querySelector("#panier-detail")
+const panierTotalElt = document.querySelector("#panier-total")
 
-// getPanier().then((cameras) => {
-//     cameras.forEach(camera => {
-//         document.getElementById("panier-detail").appendChild(panierDetail(camera));  
-//     });
-//     document.getElementById("panier-total").appendChild(panierTotal(cameras));
-// })
+const panier = new Panier();
+console.log(panier);
+
+afficherPanier(panier, panierDetailElt, panierTotalElt);

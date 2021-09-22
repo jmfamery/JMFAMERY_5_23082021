@@ -1,11 +1,17 @@
-let panier = JSON.parse(localStorage.getItem("panier"));
-console.log(panier)
+export function afficherPanier(panier, panierDetail, panierTotal) {
 
-const panierDetail = document.querySelector("#panier-detail")
-const panierTotal = document.querySelector("#panier-total")
+  if (panier.estVide()) {
+    panierDetail.innerHTML = genererPanierVideDetail(panier)
+    panierTotal.innerHTML = genererPanierTotal(panier)
+  } else {
+    panierDetail.innerHTML = genererPanierPleinDetail(panier)
+    panierTotal.innerHTML = genererPanierTotal(panier)
+    ajouterEcouteursClics();
+  }
+}
 
-if (panier === null || panier == 0) {
-  const panierVideDetail = `<div class="card-body text-center pb-0">
+function genererPanierVideDetail () {
+  return `<div class="card-body text-center pb-0">
     <div class="fond-clair-v3 police2-gras">
       <div class="row g-3">
         <div class="col-12">
@@ -14,50 +20,25 @@ if (panier === null || panier == 0) {
       </div>
     </div>
   </div>`
+}
 
-  const panierVideTotal = `<div class="card-footer text-center border-top-0 pb-0">
-    <div class="row g-3 py-2">
-      <div class="col-6">
-        <div class="police2-normal">
-          <a class="btn btn-dark" href="">Supprimer le panier</a>
-        </div>
-      </div>
+function genererPanierPleinDetail(panier) {
+  let panierPleinDetail = "";
 
-      <div class="col-2 pt-2">
-        <p class="police2-gras">Total</p>
-      </div>
-
-      <div class="col-3 pt-2">
-        <p class="police2-gras"></p>
-      </div>
-
-      <div class="col-1">
-      </div>
-    </div>
-  </div>`;
-
-  panierDetail.innerHTML = panierVideDetail
-  panierTotal.innerHTML = panierVideTotal
-
-} else {
-  let panierPleinDetail = []
-  let numeropanier = 0
-  let totalpanier = 0
-
-  for (numeropanier = 0; numeropanier < panier.length; numeropanier++) {
-    panierPleinDetail = panierPleinDetail + `<div class="card-body text-center pb-0">
+  panier.items.forEach(appareil => {
+    panierPleinDetail += `<div class="card-body text-center pb-0">
       <div class="fond-clair-v3 police2-normal">
         <div class="row g-3">
           <div class="col-3">
-            <p>${panier[numeropanier].name}</p>
+            <p>${appareil.name}</p>
           </div>
 
           <div class="col-3">
-            <p>${panier[numeropanier].lenses}</p>
+            <p>${appareil.lenses}</p>
           </div>
 
           <div class="col-2">
-            <p>${panier[numeropanier].number}</p>
+            <p>${appareil.number}</p>
           </div>
 
           <div class="col-3">
@@ -65,7 +46,7 @@ if (panier === null || panier == 0) {
               style: 'currency',
               currency: 'EUR',
               minimumFractionDigits: 0
-            }).format(panier[numeropanier].price * panier[numeropanier].number / 100)}</p>
+            }).format(appareil.price * appareil.number / 100)}</p>
           </div>
 
           <div class="col-1">
@@ -80,17 +61,13 @@ if (panier === null || panier == 0) {
         </div>
       </div>
     </div>`;
-  }
+  });
 
-  if (numeropanier == panier.length) {
-    panierDetail.innerHTML = panierPleinDetail
-  }
+  return panierPleinDetail;
+}
 
-  for (numeropanier = 0; numeropanier < panier.length; numeropanier++) {
-    totalpanier = totalpanier + (panier[numeropanier].price * panier[numeropanier].number);
-  }
-
-  const panierPleinTotal = `<div class="card-footer text-center border-top-0 pb-0">
+function genererPanierTotal(panier) {
+  return `<div class="card-footer text-center border-top-0 pb-0">
     <div class="row g-3 py-2">
       <div class="col-6">
         <div class="police2-normal">
@@ -107,43 +84,44 @@ if (panier === null || panier == 0) {
           style: 'currency',
           currency: 'EUR',
           minimumFractionDigits: 0
-        }).format(totalpanier / 100)}</p>
+        }).format(panier.montantTotal() / 100)}</p>
       </div>
 
       <div class="col-1">
       </div>
     </div>
   </div>`;
+}
 
-  if (numeropanier == panier.length) {
-    panierTotal.innerHTML = panierPleinTotal
+
+function ajouterEcouteursClics() {
+
+  let suppressionIndividuel = document.querySelectorAll(".suppression-individuel")
+  console.log(suppressionIndividuel)
+
+  for (let suppression = 0; suppression < suppressionIndividuel.length; suppression++) {
+    suppressionIndividuel[suppression].addEventListener('click', () => {
+      let idSuppression = panier[suppression]._id;
+      console.log(idSuppression)
+
+      panier = panier.filter(appareil => appareil._id !== idSuppression)
+      localStorage.setItem("panier", JSON.stringify(panier));
+      alert("L'appareil a été supprimer")
+      window.location.href = "panier.html"
+
+      console.log(panier)
+    })
   }
-}
 
-let suppressionIndividuel = document.querySelectorAll(".suppression-individuel")
-console.log(suppressionIndividuel)
+  let suppressionTotal = document.querySelector(".suppression-total")
+  console.log(suppressionTotal)
 
-for (let suppression = 0; suppression < suppressionIndividuel.length; suppression++) {
-  suppressionIndividuel[suppression].addEventListener('click', () => {
-    let idSuppression = panier[suppression]._id;
-    console.log(idSuppression)
+  if (suppressionTotal !== null) {
+    suppressionTotal.addEventListener('click', () => {
+      localStorage.removeItem("panier");
+      alert("Le panier a été vidé")
+      window.location.href = "panier.html"
+    })
+  }
 
-    panier = panier.filter(appareil => appareil._id !== idSuppression)
-    localStorage.setItem("panier", JSON.stringify(panier));
-    alert("L'appareil a été supprimer")
-    window.location.href = "panier.html"
-
-    console.log(panier)
-  })
-}
-
-let suppressionTotal = document.querySelector(".suppression-total")
-console.log(suppressionTotal)
-
-if (suppressionTotal !== null) {
-  suppressionTotal.addEventListener('click', () => {
-    localStorage.removeItem("panier");
-    alert("Le panier a été vidé")
-    window.location.href = "panier.html"
-  })
 }
