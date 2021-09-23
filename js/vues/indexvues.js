@@ -36,8 +36,8 @@ export function afficherDesAppareilsPhoto(camera) {
     </div>
   </div>`;
 
-  let div = document.createElement('div');
-  div.classList.add('col-lg-4', 'col-md-6');
-  div.innerHTML = index;
-  return div;
+  let afficherElt = document.createElement('div');
+  afficherElt.classList.add('col-lg-4', 'col-md-6');
+  afficherElt.innerHTML = index;
+  return afficherElt;
 }

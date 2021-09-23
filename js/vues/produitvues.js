@@ -1,8 +1,3 @@
-//export function afficherUnAppareilPhoto(camera, panier) {
-//  genererUnAppareilPhoto(camera)
-//  alimentationPanier(panier)
-//}
-
 function selectionObjectif(camera) {
   let objectifElt = document.createElement('select');
   objectifElt.classList.add('form-select', 'text-center');
@@ -22,7 +17,6 @@ function selectionObjectif(camera) {
   return objectifElt;
 }
 
-//function genererUnAppareilPhoto(camera){
 export function afficherUnAppareilPhoto(camera, panier) {
   let produit = `<div class="card border border-2 border-dark rounded-3">
       <div class="fond-clair-v2">
@@ -88,15 +82,13 @@ export function afficherUnAppareilPhoto(camera, panier) {
       </div>
     </div>`;
 
-  let div = document.createElement('div');
-  div.innerHTML = produit;
+  let afficherElt = document.createElement('div');
+  afficherElt.innerHTML = produit;
 
   let selectElt = selectionObjectif(camera);
-  div.querySelector('.produit-selection-objectif').appendChild(selectElt);
-  //}                
-
-  //function alimentationPanier(panier){
-  let ajouterAupanierBtn = div.querySelector('#ajouter-au-panier-btn');
+  afficherElt.querySelector('.produit-selection-objectif').appendChild(selectElt);
+  
+  let ajouterAupanierBtn = afficherElt.querySelector('#ajouter-au-panier-btn');
   ajouterAupanierBtn.addEventListener('click', () => {
     if (selectElt.value >= 0) {
       let quantites = document.getElementById("quantite").value;
@@ -105,8 +97,9 @@ export function afficherUnAppareilPhoto(camera, panier) {
         _id: camera._id,
         name: camera.name,
         lenses: camera.lenses[selectElt.value],
+        lenses_id: selectElt.value,
         price: camera.price,
-        number: quantites
+        number: parseInt(quantites)
       }
       console.log(appareil);
 
@@ -127,7 +120,6 @@ export function afficherUnAppareilPhoto(camera, panier) {
       alert("Veuillez selectionner l'objectif")
     }
   })
-  //}
 
-  return div;
+  return afficherElt;
 }

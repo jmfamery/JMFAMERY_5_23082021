@@ -1,16 +1,16 @@
 export function afficherPanier(panier, panierDetail, panierTotal) {
 
   if (panier.estVide()) {
-    panierDetail.innerHTML = genererPanierVideDetail(panier)
-    panierTotal.innerHTML = genererPanierTotal(panier)
+    panierDetail.innerHTML = afficherPanierVideDetail(panier)
+    panierTotal.innerHTML = afficherPanierTotal(panier)
   } else {
-    panierDetail.innerHTML = genererPanierPleinDetail(panier)
-    panierTotal.innerHTML = genererPanierTotal(panier)
+    panierDetail.innerHTML = afficherPanierPleinDetail(panier)
+    panierTotal.innerHTML = afficherPanierTotal(panier)
     ajouterEcouteursClics();
   }
 }
 
-function genererPanierVideDetail () {
+function afficherPanierVideDetail () {
   return `<div class="card-body text-center pb-0">
     <div class="fond-clair-v3 police2-gras">
       <div class="row g-3">
@@ -22,10 +22,10 @@ function genererPanierVideDetail () {
   </div>`
 }
 
-function genererPanierPleinDetail(panier) {
+function afficherPanierPleinDetail(panier) {
   let panierPleinDetail = "";
 
-  panier.items.forEach(appareil => {
+  panier.donnees.forEach(appareil => {
     panierPleinDetail += `<div class="card-body text-center pb-0">
       <div class="fond-clair-v3 police2-normal">
         <div class="row g-3">
@@ -61,12 +61,14 @@ function genererPanierPleinDetail(panier) {
         </div>
       </div>
     </div>`;
+    console.log(appareil)
   });
 
+  console.log(panier.donnees)
   return panierPleinDetail;
 }
 
-function genererPanierTotal(panier) {
+function afficherPanierTotal(panier) {
   return `<div class="card-footer text-center border-top-0 pb-0">
     <div class="row g-3 py-2">
       <div class="col-6">
@@ -96,22 +98,22 @@ function genererPanierTotal(panier) {
 
 function ajouterEcouteursClics() {
 
-  let suppressionIndividuel = document.querySelectorAll(".suppression-individuel")
-  console.log(suppressionIndividuel)
+  // let suppressionIndividuel = document.querySelectorAll(".suppression-individuel")
+  // console.log(suppressionIndividuel)
 
-  for (let suppression = 0; suppression < suppressionIndividuel.length; suppression++) {
-    suppressionIndividuel[suppression].addEventListener('click', () => {
-      let idSuppression = panier[suppression]._id;
-      console.log(idSuppression)
+  // for (let suppression = 0; suppression < suppressionIndividuel.length; suppression++) {
+  //   suppressionIndividuel[suppression].addEventListener('click', () => {
+  //     let idSuppression = panier[suppression]._id;
+  //     console.log(idSuppression)
 
-      panier = panier.filter(appareil => appareil._id !== idSuppression)
-      localStorage.setItem("panier", JSON.stringify(panier));
-      alert("L'appareil a été supprimer")
-      window.location.href = "panier.html"
+  //     panier = panier.filter(appareil => appareil._id !== idSuppression)
+  //     localStorage.setItem("panier", JSON.stringify(this.donnees));
+  //     alert("L'appareil a été supprimer")
+  //     window.location.href = "panier.html"
 
-      console.log(panier)
-    })
-  }
+  //     console.log(panier)
+  //   })
+  // }
 
   let suppressionTotal = document.querySelector(".suppression-total")
   console.log(suppressionTotal)
