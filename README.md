@@ -1,6 +1,6 @@
 # Orinoco #
 
-Il s'agit du serveur frontal du Projet 5 du parcours Développeur Web.
+Il s'agit du serveur frontend du Projet 5 du parcours Développeur Web.
 
 ### Conditions préalables ###
 

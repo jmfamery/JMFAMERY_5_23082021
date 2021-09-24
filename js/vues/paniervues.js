@@ -6,6 +6,7 @@ export function afficherPanier(panier, panierDetail, panierTotal) {
   } else {
     panierDetail.innerHTML = afficherPanierPleinDetail(panier)
     panierTotal.innerHTML = afficherPanierTotal(panier)
+    //supprimerProduit = SelectionProduitASupprimer(produit)
     ajouterEcouteursClics();
   }
 }
@@ -50,11 +51,11 @@ function afficherPanierPleinDetail(panier) {
           </div>
 
           <div class="col-1">
-            <button class="btn suppression-individuel">
+            <button class="btn poubelle" >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-trash-fill" viewBox="0 0 16 16">
-                <path
-                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              class="bi bi-trash-fill" viewBox="0 0 16 16">
+              <path
+                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
               </svg>
             </button>
           </div>
@@ -65,6 +66,23 @@ function afficherPanierPleinDetail(panier) {
   });
 
   console.log(panier.donnees)
+
+  // function SelectionProduitASupprimer (produit) {
+    let poubelle = document.querySelectorAll(".poubelle")
+    console.log("poubelle 1 :", poubelle)
+    
+    if (poubelle) {
+      console.log("poubelle 2 :", poubelle)
+      poubelle.forEach(vider => {
+        vider.classList.add(`expelliarmus`)
+        console.log("poubelle 3 :", )
+      })
+      // poubelle.addEventListener('click', () => {
+      // console.log("poubelle x :", poubelle)
+      // })
+    }
+  // }
+
   return panierPleinDetail;
 }
 

@@ -111,10 +111,10 @@ export function afficherUnAppareilPhoto(camera, panier) {
         minimumFractionDigits: 0
       }).format(camera.price * quantites / 100);
 
-      if (appareil.number == 1) {
+      if (quantites == 1) {
         alert(`L'appareil photo ${appareil.name}, objectif ${appareil.lenses} pour un montant de ${totalPrice} a bien été ajouté au panier.`);
       }else {
-        alert(`Les ${appareil.number} appareils photo ${appareil.name}, objectif ${appareil.lenses} pour un montant de ${totalPrice} ont bien été ajoutés au panier.`);
+        alert(`Les ${quantites} appareils photo ${appareil.name}, objectif ${appareil.lenses} pour un montant de ${totalPrice} ont bien été ajoutés au panier.`);
       }
     } else {
       alert("Veuillez selectionner l'objectif")
