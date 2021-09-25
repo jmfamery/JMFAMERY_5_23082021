@@ -43,7 +43,7 @@ export function afficherUnAppareilPhoto(camera, panier) {
                   
                   <div class="input-group px-3 mb-3">
                     <label for="objectif" class="input-group-text form-label text-white bg-dark" >Objectif</label>
-                    <div class ="produit-selection-objectif">
+                    <div id ="produit-selection-objectif">
                     </div>                                      
                   </div>
   
@@ -86,7 +86,7 @@ export function afficherUnAppareilPhoto(camera, panier) {
   afficherElt.innerHTML = produit;
 
   let selectElt = selectionObjectif(camera);
-  afficherElt.querySelector('.produit-selection-objectif').appendChild(selectElt);
+  afficherElt.querySelector('#produit-selection-objectif').appendChild(selectElt);
   
   let ajouterAupanierBtn = afficherElt.querySelector('#ajouter-au-panier-btn');
   ajouterAupanierBtn.addEventListener('click', () => {

@@ -5,6 +5,6 @@ const panierDetailElt = document.querySelector("#panier-detail")
 const panierTotalElt = document.querySelector("#panier-total")
 
 const panier = new Panier();
-console.log(panier);
+console.log("panier.donnees : ", panier.donnees);
 
 afficherPanier(panier, panierDetailElt, panierTotalElt);

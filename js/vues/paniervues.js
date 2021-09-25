@@ -6,8 +6,7 @@ export function afficherPanier(panier, panierDetail, panierTotal) {
   } else {
     panierDetail.innerHTML = afficherPanierPleinDetail(panier)
     panierTotal.innerHTML = afficherPanierTotal(panier)
-    //supprimerProduit = SelectionProduitASupprimer(produit)
-    ajouterEcouteursClics();
+    ajouterEcouteursClics(panier)
   }
 }
 
@@ -51,7 +50,7 @@ function afficherPanierPleinDetail(panier) {
           </div>
 
           <div class="col-1">
-            <button class="btn poubelle" >
+            <button id="poubelleappareil" class="btn" type="button" >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-trash-fill" viewBox="0 0 16 16">
               <path
@@ -62,26 +61,8 @@ function afficherPanierPleinDetail(panier) {
         </div>
       </div>
     </div>`;
-    console.log(appareil)
+    console.log("appareil : ",appareil)
   });
-
-  console.log(panier.donnees)
-
-  // function SelectionProduitASupprimer (produit) {
-    let poubelle = document.querySelectorAll(".poubelle")
-    console.log("poubelle 1 :", poubelle)
-    
-    if (poubelle) {
-      console.log("poubelle 2 :", poubelle)
-      poubelle.forEach(vider => {
-        vider.classList.add(`expelliarmus`)
-        console.log("poubelle 3 :", )
-      })
-      // poubelle.addEventListener('click', () => {
-      // console.log("poubelle x :", poubelle)
-      // })
-    }
-  // }
 
   return panierPleinDetail;
 }
@@ -91,7 +72,7 @@ function afficherPanierTotal(panier) {
     <div class="row g-3 py-2">
       <div class="col-6">
         <div class="police2-normal">
-          <button class="btn btn-dark suppression-total">Supprimer le panier</button>
+          <button id="viderpanier" class="btn btn-dark">Supprimer le panier</button>
         </div>
       </div>
 
@@ -113,35 +94,43 @@ function afficherPanierTotal(panier) {
   </div>`;
 }
 
+function ajouterEcouteursClics(panier) {
+  let poubelleAppareil = document.querySelectorAll("#poubelleappareil")
 
-function ajouterEcouteursClics() {
-
-  // let suppressionIndividuel = document.querySelectorAll(".suppression-individuel")
-  // console.log(suppressionIndividuel)
-
-  // for (let suppression = 0; suppression < suppressionIndividuel.length; suppression++) {
-  //   suppressionIndividuel[suppression].addEventListener('click', () => {
-  //     let idSuppression = panier[suppression]._id;
-  //     console.log(idSuppression)
-
-  //     panier = panier.filter(appareil => appareil._id !== idSuppression)
-  //     localStorage.setItem("panier", JSON.stringify(this.donnees));
-  //     alert("L'appareil a été supprimer")
-  //     window.location.href = "panier.html"
-
-  //     console.log(panier)
-  //   })
-  // }
-
-  let suppressionTotal = document.querySelector(".suppression-total")
-  console.log(suppressionTotal)
-
-  if (suppressionTotal !== null) {
-    suppressionTotal.addEventListener('click', () => {
-      localStorage.removeItem("panier");
-      alert("Le panier a été vidé")
+  for (let suppression = 0; suppression < poubelleAppareil.length; suppression++) {
+    poubelleAppareil[suppression].addEventListener('click', () => {
+      let idPoubelleAppareil = panier.donnees[suppression]._id + panier.donnees[suppression].lenses_id;
+      console.log("Id appareil à supprimer :", idPoubelleAppareil)
+      panier.supprimerUnProduit(idPoubelleAppareil)
+      alert("L'appareil a été supprimer")
       window.location.href = "panier.html"
     })
   }
 
+  // let numeroIndex = -1;
+  // panier.donnees.forEach((_id) => {
+  //   numeroIndex++;
+  //   console.log("liste : ", numeroIndex)
+  //   poubelleAppareil[numeroIndex].addEventListener('click', () => {
+  //     if (panier.donnees.length == 1) {
+  //       numeroIndex = 0
+  //     }
+  //     console.log("valider : ", numeroIndex)
+  //     let idPoubelleAppareil = panier.donnees[numeroIndex]._id + panier.donnees[numeroIndex].lenses_id;
+  //     console.log("Id appareil à supprimer :", idPoubelleAppareil);
+  //     panier.supprimerUnProduit(idPoubelleAppareil);
+  //     alert("L'appareil a été supprimer");
+  //     window.location.href = "panier.html"
+  //   })
+  // })
+
+  let viderPanier = document.querySelector("#viderpanier")
+
+  if (viderPanier !== null) {
+    viderPanier.addEventListener('click', () => {
+      panier.supprimerTousProduits();
+      alert("Le panier a été vidé");
+      window.location.href = "panier.html"
+    })
+  }
 }
