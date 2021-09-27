@@ -1,12 +1,12 @@
 export function afficherPanier(panier, panierDetail, panierTotal) {
-
   if (panier.estVide()) {
-    panierDetail.innerHTML = afficherPanierVideDetail(panier)
+    panierDetail.innerHTML = afficherPanierVideDetail()
     panierTotal.innerHTML = afficherPanierTotal(panier)
   } else {
     panierDetail.innerHTML = afficherPanierPleinDetail(panier)
     panierTotal.innerHTML = afficherPanierTotal(panier)
-    ajouterEcouteursClics(panier)
+    clicssupprimerunappareil(panier)
+    clicssupprimertousappareils(panier)
   }
 }
 
@@ -94,7 +94,7 @@ function afficherPanierTotal(panier) {
   </div>`;
 }
 
-function ajouterEcouteursClics(panier) {
+function clicssupprimerunappareil(panier) {
   let poubelleAppareil = document.querySelectorAll("#poubelleappareil")
 
   for (let suppression = 0; suppression < poubelleAppareil.length; suppression++) {
@@ -106,31 +106,14 @@ function ajouterEcouteursClics(panier) {
       window.location.href = "panier.html"
     })
   }
+}
 
-  // let numeroIndex = -1;
-  // panier.donnees.forEach((_id) => {
-  //   numeroIndex++;
-  //   console.log("liste : ", numeroIndex)
-  //   poubelleAppareil[numeroIndex].addEventListener('click', () => {
-  //     if (panier.donnees.length == 1) {
-  //       numeroIndex = 0
-  //     }
-  //     console.log("valider : ", numeroIndex)
-  //     let idPoubelleAppareil = panier.donnees[numeroIndex]._id + panier.donnees[numeroIndex].lenses_id;
-  //     console.log("Id appareil à supprimer :", idPoubelleAppareil);
-  //     panier.supprimerUnProduit(idPoubelleAppareil);
-  //     alert("L'appareil a été supprimer");
-  //     window.location.href = "panier.html"
-  //   })
-  // })
-
+function clicssupprimertousappareils(panier) {
   let viderPanier = document.querySelector("#viderpanier")
 
-  if (viderPanier !== null) {
-    viderPanier.addEventListener('click', () => {
-      panier.supprimerTousProduits();
-      alert("Le panier a été vidé");
-      window.location.href = "panier.html"
-    })
-  }
+  viderPanier.addEventListener('click', () => {
+    panier.supprimerTousProduits();
+    alert("Le panier a été vidé");
+    window.location.href = "panier.html"
+  })
 }

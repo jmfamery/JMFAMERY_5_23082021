@@ -69,7 +69,7 @@
   <!-- Main -->
   <main role="main">
     <!-- Bandeau -->
-    <section class="fond-clair-v1">
+    <section class="fond-clair-v1" style ="height: 170px">
       <div class="container text-center py-4">
         <div class="row">
           <div class="col">
@@ -133,58 +133,7 @@
               </div>
             </div>
 
-            <form class="police2-normal">
-              <div class="card-body pb-0">
-                <div class="fond-clair-v3">
-                  <div class="row g-3 px-3">
-                    <div class="col-md-4">
-                      <label for="nom" class="form-label">Nom</label>
-                      <input type="text" class="form-control" id="nom" required>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label for="prenom" class="form-label">Prénom</label>
-                      <input type="text" class="form-control" id="prenom" required>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label for="mail" class="form-label">Adresse mail</label>
-                      <div class="input-group">
-                        <span class="input-group-text" id="mail2">@</span>
-                        <input type="text" class="form-control" id="mail" aria-describedby="mail2" required>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <label for="adresse" class="form-label">Adresse</label>
-                      <input type="text" class="form-control" id="adresse" required>
-                    </div>
-
-                    <div class="col-md-2">
-                      <label for="code-postal" class="form-label">Code postal</label>
-                      <input type="number" class="form-control" id="code-postal" required>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label for="ville" class="form-label">Ville</label>
-                      <input type="text" class="form-control" id="ville" required>
-                    </div>
-
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="accepter" required>
-                        <label class="form-check-label" for="accepter">
-                          Accepter les termes et conditions
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-footer text-center border-top-0 pb-0 my-3">
-                <button class="btn btn-dark" type="submit">Soumettre le formulaire</button>
-              </div>
+            <form id="formulaire" class="police2-normal">
             </form>
           </div>
         </div>
@@ -202,7 +151,7 @@
               </div>
 
               <div class="col-sm-6">
-                <a class="btn btn-dark" href="commande.html">Commander</a>
+                <a class="btn btn-dark" href="commande.html">Consulter la précédante commande</a>
               </div>
             </div>
           </div>
@@ -233,6 +182,7 @@
 
   <!-- Javascript -->
   <script type="module" src="../js/controleurs/panier.js"></script>
+  <script type="module" src="../js/controleurs/cordonnees.js"></script>
 </body>
 
 </html>

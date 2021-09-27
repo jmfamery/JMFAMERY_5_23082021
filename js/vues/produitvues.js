@@ -93,28 +93,32 @@ export function afficherUnAppareilPhoto(camera, panier) {
     if (selectElt.value >= 0) {
       let quantites = document.getElementById("quantite").value;
 
-      let appareil = {
-        _id: camera._id,
-        name: camera.name,
-        lenses: camera.lenses[selectElt.value],
-        lenses_id: selectElt.value,
-        price: camera.price,
-        number: parseInt(quantites)
-      }
-      console.log(appareil);
-
-      panier.ajouterUnProduit(appareil);
-
-      let totalPrice = Intl.NumberFormat('fr-FR', {
-        style: 'currency',
-        currency: 'EUR',
-        minimumFractionDigits: 0
-      }).format(camera.price * quantites / 100);
-
-      if (quantites == 1) {
-        alert(`L'appareil photo ${appareil.name}, objectif ${appareil.lenses} pour un montant de ${totalPrice} a bien été ajouté au panier.`);
-      }else {
-        alert(`Les ${quantites} appareils photo ${appareil.name}, objectif ${appareil.lenses} pour un montant de ${totalPrice} ont bien été ajoutés au panier.`);
+      if (quantites >= 1) {
+        let appareil = {
+          _id: camera._id,
+          name: camera.name,
+          lenses: camera.lenses[selectElt.value],
+          lenses_id: selectElt.value,
+          price: camera.price,
+          number: parseInt(quantites)
+        }
+        console.log(appareil);
+  
+        panier.ajouterUnProduit(appareil);
+  
+        let totalPrice = Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: 0
+        }).format(camera.price * quantites / 100);
+  
+        if (quantites == 1) {
+          alert(`L'appareil photo ${appareil.name}, objectif ${appareil.lenses} pour un montant de ${totalPrice} a bien été ajouté au panier.`);
+        }else {
+          alert(`Les ${quantites} appareils photo ${appareil.name}, objectif ${appareil.lenses} pour un montant de ${totalPrice} ont bien été ajoutés au panier.`);
+        }
+      } else {
+        alert("Veuillez saisir une quantité suppérieur à 0")
       }
     } else {
       alert("Veuillez selectionner l'objectif")
