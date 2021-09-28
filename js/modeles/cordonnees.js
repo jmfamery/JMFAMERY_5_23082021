@@ -18,12 +18,16 @@ export class Cordonnees {
       this.donnees = JSON.parse(localStorage.getItem("cordonnees")) || [];
     }
 
-    enregistrer(formulaire) {
+    estPlein() {
+      return this.donnees.length !== 0;
+    }
+
+    enregistrerCordonnees(formulaire) {
       this.donnees.push(formulaire)
       localStorage.setItem("cordonnees", JSON.stringify(this.donnees))
     }
 
-    supprimer() {
+    supprimerCordonnees() {
         localStorage.removeItem("cordonnees", JSON.stringify(this.donnees))
       }
   }
