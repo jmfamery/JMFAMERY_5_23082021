@@ -5,8 +5,8 @@ export function afficherPanier(panier, panierDetail, panierTotal) {
   } else {
     panierDetail.innerHTML = afficherPanierPleinDetail(panier)
     panierTotal.innerHTML = afficherPanierTotal(panier)
-    clicssupprimerunappareil(panier)
-    clicssupprimertousappareils(panier)
+    clicsSupprimerUnAppareil(panier)
+    clicsSupprimerTousAppareils(panier)
   }
 }
 
@@ -50,7 +50,7 @@ function afficherPanierPleinDetail(panier) {
           </div>
 
           <div class="col-1">
-            <button id="poubelleappareil" class="btn" type="button" >
+            <button class="btn poubelleappareil" type="button" >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-trash-fill" viewBox="0 0 16 16">
               <path
@@ -94,8 +94,8 @@ function afficherPanierTotal(panier) {
   </div>`;
 }
 
-function clicssupprimerunappareil(panier) {
-  let poubelleAppareil = document.querySelectorAll("#poubelleappareil")
+function clicsSupprimerUnAppareil(panier) {
+  let poubelleAppareil = document.querySelectorAll(".poubelleappareil")
 
   for (let suppression = 0; suppression < poubelleAppareil.length; suppression++) {
     poubelleAppareil[suppression].addEventListener('click', () => {
@@ -108,7 +108,7 @@ function clicssupprimerunappareil(panier) {
   }
 }
 
-function clicssupprimertousappareils(panier) {
+function clicsSupprimerTousAppareils(panier) {
   let viderPanier = document.querySelector("#viderpanier")
 
   viderPanier.addEventListener('click', () => {
