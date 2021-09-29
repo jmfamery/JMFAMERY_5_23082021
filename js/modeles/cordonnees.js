@@ -22,8 +22,12 @@ export class Cordonnees {
       return this.donnees.length !== 0;
     }
 
+    estVide() {
+      return this.donnees.length === 0;
+    }
+
     enregistrerCordonnees(formulaire) {
-      this.donnees.push(formulaire)
+      this.donnees.splice(0, 1, formulaire)
       localStorage.setItem("cordonnees", JSON.stringify(this.donnees))
     }
 
