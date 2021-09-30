@@ -27,13 +27,31 @@ export class Cordonnees {
 
     valider(){
       const erreurs = [];
-      if(this.donnees.prenom.length < 2){
-        erreurs.push({entree: "prenom", "message" :  "Le prenom est trop court !"})
-      } else {
-        if(this.donnees.nom = RegExp(/\d/)){
-          erreurs.push('Le nom est trop court !')
-        }
+
+      if ((/\D{2,20}/.test(this.donnees.prenom)) == false) {
+        erreurs.push("Le prenom est mal saisi ! Il doit avoir entre 2 et 20 caratéress.")
       }
+
+      if ((/\D{2,20}/.test(this.donnees.nom)) == false) {  
+        erreurs.push("Le nom est mal saisie ! Il doit avoir entre 2 et 20 caratéres.")
+      } 
+
+      if ((/^[^@]+@\w+(\.\w+)+\w$/.test(this.donnees.mail)) == false) {
+        erreurs.push("L'adresse mail est mal saisie !")
+      }
+
+      if ((/\D{5,30}/.test(this.donnees.adresse)) == false) {  
+        erreurs.push("L'adresse est mal saisie ! Il doit avoir entre 5 et 30 caratéres.")
+      } 
+
+      if ((/\d{5}/.test(this.donnees.code_postal)) == false) {  
+        erreurs.push("Le code postal est mal saisie ! Il doit avoir 5 chiffres.")
+      } 
+
+      if ((/\D{2,25}/.test(this.donnees.ville)) == false) {  
+        erreurs.push("La ville est mal saisie ! Il doit avoir entre 2 et 25 caratéres.")
+      } 
+
       console.log(erreurs);
       return erreurs;
     }

@@ -46,9 +46,24 @@ function afficherFormulaire(cordonnees) {
   </div>
 
   <div class="card-footer text-center border-top-0 pb-0 my-3">
-    <button id="commande" class="btn btn-dark" type="submit">Commander</button>
-    <button id="vider" class="btn btn-dark" type="submit">Vider les cordonnees</button>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <button id="vider" class="btn btn-dark" type="submit">Effacer les cordonnees</button>
+      </div>
+
+      <div class="col-md-6">
+        <button id="commande" class="btn btn-dark" type="submit">Commander</button>
+      </div>
+    </div>
   </div>`
+}
+
+function viderFormulaire(cordonnees) {
+  let formuliareViderBtn = document.querySelector("#vider")
+
+  formuliareViderBtn.addEventListener('click', () => {
+    cordonnees.supprimerCordonnees()
+  })
 }
 
 function saisieFormulaire(cordonnees) {
@@ -64,20 +79,16 @@ function saisieFormulaire(cordonnees) {
 
     let erreurs = cordonnees.valider();
     if(erreurs.length){
-      alert(JSON.stringify(erreurs))
+      alert(JSON.stringify(erreurs, null, 1))
     }
     else{
-      alert('ok')
       cordonnees.enregistrerCordonnees();
       console.log("Enregistrement du formulaire : ", cordonnees.donnees)
+      if (window.confirm("Confirmez-vous votre commande ?")){
+        window.location.href = "commande.html"
+      } else {
+        window.location.href = "panier.html"
+      }
     }
-  })
-}
-
-function viderFormulaire(cordonnees) {
-  let formuliareViderBtn = document.querySelector("#vider")
-
-  formuliareViderBtn.addEventListener('click', () => {
-    cordonnees.supprimerCordonnees()
   })
 }
