@@ -1,4 +1,4 @@
-import {afficherDesAppareilsPhoto} from "../vues/indexvues.js"
+import {afficherDesAppareilsPhoto} from "../vues/indexVues.js"
 import {getAllCameras} from "../api/api.js"
 
 getAllCameras().then((cameras) => {

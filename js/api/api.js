@@ -1,4 +1,5 @@
 import {Camera} from "../modeles/camera.js";
+import {Contact} from "../modeles/contact.js"
 
 export async function getAllCameras() {
   try {
@@ -26,24 +27,19 @@ export async function getOneCamera(_id) {
   }
 }
 
-export async function getCommande() {
+export async function orderCameras(_contact, _products) {
   try {
-    let response = await fetch('http://localhost:3000/api/cameras');
-    let camerasDonnees = await response.json();
-    let cameras = [];
-    let totalprice = 0;
-    camerasDonnees.forEach(cameraDonnees => {
-      let camera = new Camera(cameraDonnees);
-      totalprice = totalprice + camera.price
-      console.log(totalprice)
-      cameras.push(camera);
-    });
-    return cameras;
+    let response = await fetch(`http://localhost:3000/api/cameras/}`, {
+      method : `POST`,
+      body : JSON.stringify(Contact),
+      headers : {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    let result = await response.json();
+    alert(result.message);
   } catch (erreur) {
     alert(erreur)
   }
-}
-
-export async function orderCameras(_contact, _products) {
-
 }

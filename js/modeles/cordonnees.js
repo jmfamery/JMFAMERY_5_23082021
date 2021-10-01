@@ -56,11 +56,11 @@ export class Cordonnees {
       return erreurs;
     }
 
-    enregistrerCordonnees() {
+    enregistrer() {
       sessionStorage.setItem("cordonnees", JSON.stringify(this.donnees))
     }
 
-    supprimerCordonnees() {
+    supprimer() {
       sessionStorage.removeItem("cordonnees", JSON.stringify(this.donnees))
     }
   }

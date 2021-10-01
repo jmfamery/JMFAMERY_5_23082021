@@ -102,7 +102,6 @@ export function afficherUnAppareilPhoto(camera, panier) {
           price: camera.price,
           number: parseInt(quantites)
         }
-        console.log(appareil);
   
         panier.ajouterUnProduit(appareil);
   

@@ -1,6 +1,6 @@
-export function afficherCordonnees(cordonnees, formulaire) {
+export function afficherCordonnees(cordonnees, formulaire, panier, commande) {
   formulaire.innerHTML = afficherFormulaire(cordonnees)
-  saisieFormulaire(cordonnees)
+  saisieFormulaire(cordonnees, panier, commande)
   viderFormulaire(cordonnees)
 }
 
@@ -62,11 +62,11 @@ function viderFormulaire(cordonnees) {
   let formuliareViderBtn = document.querySelector("#vider")
 
   formuliareViderBtn.addEventListener('click', () => {
-    cordonnees.supprimerCordonnees()
+    cordonnees.supprimer()
   })
 }
 
-function saisieFormulaire(cordonnees) {
+function saisieFormulaire(cordonnees, panier, commande) {
   let formulaireBtn = document.querySelector("#commande")
 
   formulaireBtn.addEventListener('click', () => {
@@ -82,9 +82,13 @@ function saisieFormulaire(cordonnees) {
       alert(JSON.stringify(erreurs, null, 1))
     }
     else{
-      cordonnees.enregistrerCordonnees();
-      console.log("Enregistrement du formulaire : ", cordonnees.donnees)
+      cordonnees.enregistrer();
       if (window.confirm("Confirmez-vous votre commande ?")){
+        commande.supprimer();
+        commande.donnees=panier.donnees;
+        commande.enregistrer();
+        panier.supprimerTousProduits();
+        alert("Votre commande est bien passer")
         window.location.href = "commande.html"
       } else {
         window.location.href = "panier.html"

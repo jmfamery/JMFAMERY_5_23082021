@@ -1,4 +1,4 @@
-import {afficherUnAppareilPhoto} from "../vues/produitvues.js"
+import {afficherUnAppareilPhoto} from "../vues/produitVues.js"
 import {getOneCamera} from "../api/api.js"
 import {Panier} from "../modeles/panier.js"
 

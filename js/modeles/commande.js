@@ -21,6 +21,10 @@ export class Commande {
   enregistrer() {
     localStorage.setItem("commande", JSON.stringify(this.donnees))
   }
+
+  estVide() {
+    return this.donnees.length === 0;
+  }
  
   montantTotal() {
     let total = 0;
