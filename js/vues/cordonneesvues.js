@@ -1,5 +1,3 @@
-import { Commande } from "../modeles/commande"
-
 export function afficherCordonnees(cordonnees, formulaire, panier, commande, contact, products) {
   formulaire.innerHTML = afficherFormulaire(cordonnees)
   saisieFormulaire(cordonnees, panier, commande, contact, products)
@@ -102,8 +100,6 @@ function saisieFormulaire(cordonnees, panier, commande, contact, products) {
             products.products[numeroId] = commande.donnees[numeroId]._id
             console.log(numeroId)
           };
-          // products.products[0] = commande.donnees[0]._id
-          // products.products[1] = commande.donnees[1]._id
           console.log("contacts : ",contact);
           console.log("commande : ",commande)
           console.log("products : ",products);
