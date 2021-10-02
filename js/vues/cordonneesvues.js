@@ -1,6 +1,8 @@
-export function afficherCordonnees(cordonnees, formulaire, panier, commande) {
+import { Commande } from "../modeles/commande"
+
+export function afficherCordonnees(cordonnees, formulaire, panier, commande, contact, products) {
   formulaire.innerHTML = afficherFormulaire(cordonnees)
-  saisieFormulaire(cordonnees, panier, commande)
+  saisieFormulaire(cordonnees, panier, commande, contact, products)
   viderFormulaire(cordonnees)
 }
 
@@ -66,7 +68,7 @@ function viderFormulaire(cordonnees) {
   })
 }
 
-function saisieFormulaire(cordonnees, panier, commande) {
+function saisieFormulaire(cordonnees, panier, commande, contact, products) {
   let formulaireBtn = document.querySelector("#commande")
 
   formulaireBtn.addEventListener('click', () => {
@@ -77,21 +79,51 @@ function saisieFormulaire(cordonnees, panier, commande) {
     cordonnees.donnees.code_postal = document.getElementById("code-postal").value;
     cordonnees.donnees.ville = document.getElementById("ville").value;
 
-    let erreurs = cordonnees.valider();
-    if(erreurs.length){
-      alert(JSON.stringify(erreurs, null, 1))
-    }
-    else{
-      cordonnees.enregistrer();
-      if (window.confirm("Confirmez-vous votre commande ?")){
-        commande.supprimer();
-        commande.donnees=panier.donnees;
-        commande.enregistrer();
-        panier.supprimerTousProduits();
-        alert("Votre commande est bien passer")
-        window.location.href = "commande.html"
+    if (panier.estVide()) {
+      alert("Veuillez choisir au moins un appareil pour pouvoir commander")
+    } else {
+      let erreurs = cordonnees.valider();
+
+      if (erreurs.length) {
+        alert(JSON.stringify(erreurs, null, 1))
       } else {
-        window.location.href = "panier.html"
+        cordonnees.enregistrer();
+        if (window.confirm("Confirmez-vous votre commande ?")) {
+          commande.supprimer();
+          commande.donnees = panier.donnees;
+          commande.enregistrer();
+          panier.supprimerTousProduits();
+          contact.firstName = cordonnees.donnees.prenom;
+          contact.lastName = cordonnees.donnees.nom ;
+          contact.address = cordonnees.donnees.adresse;
+          contact.city = cordonnees.donnees.code_postal + " " + cordonnees.donnees.ville;
+          contact.email = cordonnees.donnees.mail;
+          for (let numeroId = 0; numeroId < commande.donnees.length; numeroId++) {
+            products.products[numeroId] = commande.donnees[numeroId]._id
+            console.log(numeroId)
+          };
+          // products.products[0] = commande.donnees[0]._id
+          // products.products[1] = commande.donnees[1]._id
+          console.log("contacts : ",contact);
+          console.log("commande : ",commande)
+          console.log("products : ",products);
+
+          // let response = await fetch(`http://localhost:3000/api/contact/`, {
+          //   method : `POST`,
+          //   body : JSON.stringify(contact),
+          //   headers : {
+          //     'Content-Type': 'application/json'
+          //   }
+          // })
+      
+          // let result = await response.json();
+          // alert(result.message);
+
+          alert("Votre commande est bien passer");
+          window.location.href = "commande.html"
+        } else {
+          window.location.href = "panier.html"
+        }
       }
     }
   })

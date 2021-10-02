@@ -52,7 +52,6 @@ export class Cordonnees {
         erreurs.push("La ville est mal saisie ! Il doit avoir entre 2 et 25 caratéres.")
       } 
 
-      console.log(erreurs);
       return erreurs;
     }
 

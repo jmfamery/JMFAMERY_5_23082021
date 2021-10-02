@@ -14,4 +14,5 @@ let panier = new Panier();
 
 getOneCamera(cameraId).then((camera) => {
   document.getElementById("appareil").appendChild(afficherUnAppareilPhoto(camera, panier))
+  console.log ("camera : ",camera," & panier : ",panier)
 })

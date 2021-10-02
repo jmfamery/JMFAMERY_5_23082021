@@ -6,4 +6,6 @@ const commandeTotallElt = document.querySelector("#commande-total")
 
 const commande = new Commande();
 
+console.log("commande : ",commande)
+
 afficherCommande(commande, commandeDetailElt, commandeTotallElt);
