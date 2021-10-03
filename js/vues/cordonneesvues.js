@@ -97,23 +97,14 @@ function saisieFormulaire(cordonnees, panier, commande, contact, products) {
           contact.city = cordonnees.donnees.code_postal + " " + cordonnees.donnees.ville;
           contact.email = cordonnees.donnees.mail;
           for (let numeroId = 0; numeroId < commande.donnees.length; numeroId++) {
-            products.products[numeroId] = commande.donnees[numeroId]._id
-            console.log(numeroId)
+            products[numeroId] = commande.donnees[numeroId]._id
           };
           console.log("contacts : ",contact);
           console.log("commande : ",commande)
           console.log("products : ",products);
 
-          // let response = await fetch(`http://localhost:3000/api/contact/`, {
-          //   method : `POST`,
-          //   body : JSON.stringify(contact),
-          //   headers : {
-          //     'Content-Type': 'application/json'
-          //   }
-          // })
-      
-          // let result = await response.json();
-          // alert(result.message);
+          const order = {contact, products}
+          console.log("order : ",order)
 
           alert("Votre commande est bien passer");
           window.location.href = "commande.html"
