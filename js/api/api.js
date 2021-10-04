@@ -1,5 +1,4 @@
 import {Camera} from "../modeles/camera.js";
-//import {order} from "../modeles/cordonnees.js";
 
 export async function getAllCameras() {
   try {
@@ -27,11 +26,14 @@ export async function getOneCamera(_id) {
   }
 }
 
-export async function orderCameras(order) {
+//import {ordreCommande} from "../controleurs/cordonneesCtr.js";
+import {Order} from "../modeles/order.js";
+
+export async function orderCameras(_contact, _porducts) {
   try {
     let response = await fetch(`http://localhost:3000/api/cameras/order`, {
       method : `POST`,
-      body : JSON.stringify(order),
+      body : JSON.stringify(Order),
       headers : {
         'Content-Type': 'application/json'
       }

@@ -1,10 +1,10 @@
 import {Cordonnees} from "../modeles/cordonnees.js"
 import {Panier} from "../modeles/panier.js"
 import {Commande} from "../modeles/commande.js"
-import {Order} from "../modeles/order.js"
 import {afficherCordonnees} from "../vues/cordonneesVues.js"
 import {Contact} from "../modeles/contact.js"
 import {Products} from "../modeles/products.js"
+import {Order} from "../modeles/order.js"
 
 const formulaireElt = document.querySelector("#formulaire")
 
@@ -15,13 +15,12 @@ const contact = new Contact();
 const products = new Products();
 const order = new Order();
 
-afficherCordonnees(cordonnees, formulaireElt, panier, commande, contact, products, order);
+export const ordreCommande = {contact, products}
+
+afficherCordonnees(cordonnees, formulaireElt, panier, commande, contact, products, ordreCommande);
 
 console.log("cordonnees : ",cordonnees)
 console.log("contrat : ",contact)
 console.log("products : ",products)
-console.log("order : ",order)
-
-//orderCameras(order).then(() => {
-  //document.getElementById("commande").appendChild(afficherUnAppareilPhoto(contact,products))
-//})
+console.log("ordre de commande : ",ordreCommande)
+console.log("Order : ",order)

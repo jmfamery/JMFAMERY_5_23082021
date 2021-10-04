@@ -1,6 +1,6 @@
-export function afficherCordonnees(cordonnees, formulaire, panier, commande, contact, products) {
+export function afficherCordonnees(cordonnees, formulaire, panier, commande, contact, products, ordreCommande) {
   formulaire.innerHTML = afficherFormulaire(cordonnees)
-  saisieFormulaire(cordonnees, panier, commande, contact, products)
+  saisieFormulaire(cordonnees, panier, commande, contact, products, ordreCommande)
   viderFormulaire(cordonnees)
 }
 
@@ -66,7 +66,7 @@ function viderFormulaire(cordonnees) {
   })
 }
 
-function saisieFormulaire(cordonnees, panier, commande, contact, products) {
+function saisieFormulaire(cordonnees, panier, commande, contact, products, ordreCommande) {
   let formulaireBtn = document.querySelector("#commande")
 
   formulaireBtn.addEventListener('click', () => {
@@ -103,8 +103,8 @@ function saisieFormulaire(cordonnees, panier, commande, contact, products) {
           console.log("commande : ",commande)
           console.log("products : ",products);
 
-          const order = {contact, products}
-          console.log("order : ",order)
+          ordreCommande = {contact, products}
+          console.log("ordre de commande : ",ordreCommande)
 
           alert("Votre commande est bien passer");
           window.location.href = "commande.html"

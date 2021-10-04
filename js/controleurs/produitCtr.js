@@ -2,13 +2,13 @@ import {afficherUnAppareilPhoto} from "../vues/produitVues.js"
 import {getOneCamera} from "../api/api.js"
 import {Panier} from "../modeles/panier.js"
 
-function getUrlIdParam() {
-  let params = (new URL(document.location)).searchParams;
-  let id = params.get('id');
+function getUrlIdParametre() {
+  let parametre = (new URL(document.location)).searchParams;
+  let id = parametre.get('id');
   return id;
 }
 
-let cameraId = getUrlIdParam();
+let cameraId = getUrlIdParametre();
 
 let panier = new Panier();
 
