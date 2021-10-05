@@ -26,24 +26,22 @@ export async function getOneCamera(_id) {
   }
 }
 
-//import {ordreCommande} from "../controleurs/cordonneesCtr.js";
-import {Order} from "../modeles/order.js";
-
-export async function orderCameras(_contact, _porducts) {
+export async function orderCameras(_order) {
   try {
     let response = await fetch(`http://localhost:3000/api/cameras/order`, {
       method : `POST`,
-      body : JSON.stringify(Order),
+      body : JSON.stringify(JSON.parse(sessionStorage.getItem("order"))),
       headers : {
         'Content-Type': 'application/json'
       }
     })
 
-    let result = await response.json();
-    alert(result.message);
-    console.log("retour backend ok : ",result.message)
+    let resultat = await response.json();
+    alert(resultat.orderId);
+    console.log("retour back-End ok : ",resultat)
+    return resultat
   } catch (erreur) {
     alert(erreur)
-    console.log("retour backend Ko : ",erreur)
+    console.log("retour back-End Ko : ",erreur)
   }
 }

@@ -1,11 +1,27 @@
-export function afficherCommande(commande, commandeDetail, commandeTotal) {
+export function afficherCommande(commande, commandeNumero, commandeDetail, commandeTotal) {
   if (commande.estVide()) {
+    commandeNumero.innerHTML = afficherCommandeNumero()
     commandeDetail.innerHTML = afficherCommandeVideDetail()
     commandeTotal.innerHTML = afficherCommandeTotal(commande)
   } else {
+    commandeNumero.innerHTML = afficherCommandeNumero()
     commandeDetail.innerHTML = afficherCommandePleinDetail(commande)
     commandeTotal.innerHTML = afficherCommandeTotal(commande)
   }
+}
+
+function afficherCommandeNumero () {
+  return `<div class="fond police2-gras">
+    <div class="row g-2 pb-3 fs-4">
+      <div class="col-6 text-end">
+        <p>commande :</p>
+      </div>
+
+      <div class="col-6 text-start">
+        <p>N° commande</p>
+      </div>
+    </div>
+  </div>`
 }
 
 function afficherCommandeVideDetail () {

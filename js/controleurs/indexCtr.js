@@ -7,4 +7,3 @@ getAllCameras().then((cameras) => {
         console.log("camera : ",camera)
     });
 })
-

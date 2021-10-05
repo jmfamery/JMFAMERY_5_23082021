@@ -1,6 +1,6 @@
-export function afficherCordonnees(cordonnees, formulaire, panier, commande, contact, products, ordreCommande) {
+export function afficherCordonnees(cordonnees, formulaire, panier, commande, ordre) {
   formulaire.innerHTML = afficherFormulaire(cordonnees)
-  saisieFormulaire(cordonnees, panier, commande, contact, products, ordreCommande)
+  saisieFormulaire(cordonnees, panier, commande, ordre)
   viderFormulaire(cordonnees)
 }
 
@@ -66,7 +66,7 @@ function viderFormulaire(cordonnees) {
   })
 }
 
-function saisieFormulaire(cordonnees, panier, commande, contact, products, ordreCommande) {
+function saisieFormulaire(cordonnees, panier, commande, ordre) {
   let formulaireBtn = document.querySelector("#commande")
 
   formulaireBtn.addEventListener('click', () => {
@@ -91,20 +91,18 @@ function saisieFormulaire(cordonnees, panier, commande, contact, products, ordre
           commande.donnees = panier.donnees;
           commande.enregistrer();
           panier.supprimerTousProduits();
-          contact.firstName = cordonnees.donnees.prenom;
-          contact.lastName = cordonnees.donnees.nom ;
-          contact.address = cordonnees.donnees.adresse;
-          contact.city = cordonnees.donnees.code_postal + " " + cordonnees.donnees.ville;
-          contact.email = cordonnees.donnees.mail;
-          for (let numeroId = 0; numeroId < commande.donnees.length; numeroId++) {
-            products[numeroId] = commande.donnees[numeroId]._id
-          };
-          console.log("contacts : ",contact);
-          console.log("commande : ",commande)
-          console.log("products : ",products);
+          console.log("commande : ",commande);
 
-          ordreCommande = {contact, products}
-          console.log("ordre de commande : ",ordreCommande)
+          ordre.donnees.contact.firstName = cordonnees.donnees.prenom;
+          ordre.donnees.contact.lastName = cordonnees.donnees.nom ;
+          ordre.donnees.contact.address = cordonnees.donnees.adresse;
+          ordre.donnees.contact.city = cordonnees.donnees.code_postal + " " + cordonnees.donnees.ville;
+          ordre.donnees.contact.email = cordonnees.donnees.mail;
+          for (let numeroId = 0; numeroId < commande.donnees.length; numeroId++) {
+            ordre.donnees.products[numeroId] = commande.donnees[numeroId]._id
+          };
+          ordre.enregistrer();
+          console.log("ordre de commande : ",ordre)
 
           alert("Votre commande est bien passer");
           window.location.href = "commande.html"
