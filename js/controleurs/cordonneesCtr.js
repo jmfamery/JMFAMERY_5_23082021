@@ -2,26 +2,25 @@ import {Cordonnees} from "../modeles/cordonnees.js"
 import {Panier} from "../modeles/panier.js"
 import {Commande} from "../modeles/commande.js"
 import {afficherCordonnees} from "../vues/cordonneesVues.js"
-import {Order} from "../modeles/order.js"
+import {Transfert} from "../modeles/transfert.js"
 import {orderCameras} from "../api/api.js"
 
+// récupération des données pour l'affichage de la page panier sur la partie cordonnéées
 const formulaireElt = document.querySelector("#formulaire")
 
 const cordonnees = new Cordonnees();
 const panier = new Panier();
 const commande = new Commande();
-const order = new Order();
+const transfert = new Transfert();
 
-afficherCordonnees(cordonnees, formulaireElt, panier, commande, order);
+// validation de la commande
+function validationCommande(transfert) {
+  orderCameras(transfert.donnees).then((confirmation) => {
+    const numeroCommande = confirmation.orderId
+    sessionStorage.setItem('CommandeId',numeroCommande);
+    window.location.href = "commande.html"          
+  });
+}
 
-const commandeNumero = " "
-
-orderCameras().then((resultat) => {
-  const numeroCommande = resultat.orderId
-  console.log("numero commande Back-End : ",numeroCommande)
-});
-
-console.log("cordonnees : ",cordonnees)
-console.log("commande :",commande)
-console.log("Order cordonneesCtr : ",order)
-console.log("commande numero : ", commandeNumero)
+// affichage
+afficherCordonnees(formulaireElt, cordonnees, panier, commande, transfert, validationCommande);

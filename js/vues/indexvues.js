@@ -1,3 +1,4 @@
+// affichage des appareils photos
 export function afficherDesAppareilsPhoto(camera) {
   let index = `<div class="card border border-2 border-dark rounded-3">
     <div class="fond-clair-v2">

@@ -9,17 +9,18 @@
   }
 **/
 
+// fichier de la dernière commande passée
 export class Commande {
   constructor() {
     this.recharger()
   }
 
   recharger() {
-    this.donnees = JSON.parse(localStorage.getItem("commande")) || []
+    this.donnees = JSON.parse(sessionStorage.getItem("commande")) || []
   }
 
   enregistrer() {
-    localStorage.setItem("commande", JSON.stringify(this.donnees))
+    sessionStorage.setItem("commande", JSON.stringify(this.donnees))
   }
 
   estVide() {
@@ -35,6 +36,6 @@ export class Commande {
   }
 
   supprimer(){
-    localStorage.removeItem("commande", JSON.stringify(this.donnees))
+    sessionStorage.removeItem("commande", JSON.stringify(this.donnees))
   }
 }

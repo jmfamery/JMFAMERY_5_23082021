@@ -9,6 +9,7 @@
   }
 **/
 
+// fichier contenant le panier des appareils photos
 export class Panier {
   constructor() {
     this.recharger()

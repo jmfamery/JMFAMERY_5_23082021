@@ -9,6 +9,7 @@
   }
 **/
 
+// fichier contenant les cordonnées de la personne qui commande
 export class Cordonnees {
     constructor() {
       this.recharger()

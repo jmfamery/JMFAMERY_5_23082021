@@ -1,12 +1,18 @@
 import {Commande} from "../modeles/commande.js"
 import {afficherCommande} from "../vues/commandeVues.js"
 
+// récupération des données pour l'affichage de la page commande
+const commande = new Commande();
+
 const commandeNumeroElt = document.querySelector("#commande-numero")
 const commandeDetailElt = document.querySelector("#commande-detail")
 const commandeTotallElt = document.querySelector("#commande-total")
 
-const commande = new Commande();
+let commandeId = sessionStorage.getItem('CommandeId');
 
-console.log("commande : ",commande)
+if ((commandeId) == null) {
+  commandeId = ""
+}
 
-afficherCommande(commande, commandeNumeroElt, commandeDetailElt, commandeTotallElt);
+// affichage
+afficherCommande(commande, commandeNumeroElt, commandeDetailElt, commandeTotallElt, commandeId);  

@@ -1,3 +1,4 @@
+// fichier des appareils photos récupérer dans le Back-end
 export class Camera {
   constructor(data) {
     this._id = data._id || null;

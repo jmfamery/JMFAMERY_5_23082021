@@ -1,10 +1,12 @@
-export function afficherCordonnees(cordonnees, formulaire, panier, commande, ordre) {
+export function afficherCordonnees(formulaire, cordonnees, panier, commande, transfert, validationCommande) {
   formulaire.innerHTML = afficherFormulaire(cordonnees)
-  saisieFormulaire(cordonnees, panier, commande, ordre)
+  saisieFormulaire(cordonnees, panier, commande, transfert, validationCommande)
   viderFormulaire(cordonnees)
 }
 
+// affichage du formulaire des cordonnées + saisie du formulaire + validation de la commande
 function afficherFormulaire(cordonnees) {
+  //affichage du formulaire des cordonnées
   return `<div class="card-body pb-0">
     <div class="fond-clair-v3">
       <div class="row g-3 px-3 pb-4">
@@ -58,18 +60,21 @@ function afficherFormulaire(cordonnees) {
   </div>`
 }
 
+// vider les cordonnées
 function viderFormulaire(cordonnees) {
   let formuliareViderBtn = document.querySelector("#vider")
-
   formuliareViderBtn.addEventListener('click', () => {
     cordonnees.supprimer()
   })
 }
 
-function saisieFormulaire(cordonnees, panier, commande, ordre) {
+// saisie du formulaire + validation de la commande
+function saisieFormulaire(cordonnees, panier, commande, transfert, validationCommande) {
   let formulaireBtn = document.querySelector("#commande")
 
-  formulaireBtn.addEventListener('click', () => {
+  // saisie du formulaire
+  formulaireBtn.addEventListener('click', (e) => {
+    e.preventDefault();    
     cordonnees.donnees.prenom = document.getElementById("prenom").value;
     cordonnees.donnees.nom = document.getElementById("nom").value;
     cordonnees.donnees.mail = document.getElementById("mail").value;
@@ -77,35 +82,38 @@ function saisieFormulaire(cordonnees, panier, commande, ordre) {
     cordonnees.donnees.code_postal = document.getElementById("code-postal").value;
     cordonnees.donnees.ville = document.getElementById("ville").value;
 
+    // vérification que le panier est rempli
     if (panier.estVide()) {
       alert("Veuillez choisir au moins un appareil pour pouvoir commander")
     } else {
       let erreurs = cordonnees.valider();
 
+      // vérification de la saisie du formulaire
       if (erreurs.length) {
         alert(JSON.stringify(erreurs, null, 1))
       } else {
         cordonnees.enregistrer();
+
+        // validation de la commande
         if (window.confirm("Confirmez-vous votre commande ?")) {
           commande.supprimer();
           commande.donnees = panier.donnees;
           commande.enregistrer();
+
           panier.supprimerTousProduits();
-          console.log("commande : ",commande);
 
-          ordre.donnees.contact.firstName = cordonnees.donnees.prenom;
-          ordre.donnees.contact.lastName = cordonnees.donnees.nom ;
-          ordre.donnees.contact.address = cordonnees.donnees.adresse;
-          ordre.donnees.contact.city = cordonnees.donnees.code_postal + " " + cordonnees.donnees.ville;
-          ordre.donnees.contact.email = cordonnees.donnees.mail;
+          transfert.donnees.contact.firstName = cordonnees.donnees.prenom;
+          transfert.donnees.contact.lastName = cordonnees.donnees.nom ;
+          transfert.donnees.contact.address = cordonnees.donnees.adresse;
+          transfert.donnees.contact.city = cordonnees.donnees.code_postal + " " + cordonnees.donnees.ville;
+          transfert.donnees.contact.email = cordonnees.donnees.mail;
           for (let numeroId = 0; numeroId < commande.donnees.length; numeroId++) {
-            ordre.donnees.products[numeroId] = commande.donnees[numeroId]._id
+            transfert.donnees.products[numeroId] = commande.donnees[numeroId]._id
           };
-          ordre.enregistrer();
-          console.log("ordre de commande : ",ordre)
 
-          alert("Votre commande est bien passer");
-          window.location.href = "commande.html"
+          transfert.enregistrer();
+
+          validationCommande(transfert)
         } else {
           window.location.href = "panier.html"
         }

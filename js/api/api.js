@@ -1,5 +1,7 @@
 import {Camera} from "../modeles/camera.js";
+import {Confirmation} from "../modeles/confirmation.js";
 
+// récupération des cameras
 export async function getAllCameras() {
   try {
     let response = await fetch('http://localhost:3000/api/cameras');
@@ -15,6 +17,7 @@ export async function getAllCameras() {
   }
 }
 
+// récupération d'une camera
 export async function getOneCamera(_id) {
   try {
     let response = await fetch(`http://localhost:3000/api/cameras/${_id}`);
@@ -26,22 +29,20 @@ export async function getOneCamera(_id) {
   }
 }
 
-export async function orderCameras(_order) {
+// envoi de la commande au back-end et récupération du numéro de commande
+export async function orderCameras(transfert) {
   try {
     let response = await fetch(`http://localhost:3000/api/cameras/order`, {
       method : `POST`,
-      body : JSON.stringify(JSON.parse(sessionStorage.getItem("order"))),
+      body : JSON.stringify(transfert),
       headers : {
         'Content-Type': 'application/json'
       }
     })
-
     let resultat = await response.json();
-    alert(resultat.orderId);
-    console.log("retour back-End ok : ",resultat)
-    return resultat
+    let confirmation = new Confirmation(resultat)
+    return confirmation
   } catch (erreur) {
     alert(erreur)
-    console.log("retour back-End Ko : ",erreur)
   }
 }

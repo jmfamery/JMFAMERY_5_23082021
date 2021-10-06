@@ -1,3 +1,4 @@
+// objectifs
 function selectionObjectif(camera) {
   let objectifElt = document.createElement('select');
   objectifElt.classList.add('form-select', 'text-center');
@@ -17,6 +18,7 @@ function selectionObjectif(camera) {
   return objectifElt;
 }
 
+// affichage + validation pour le panier d'un appareil photo
 export function afficherUnAppareilPhoto(camera, panier) {
   let produit = `<div class="card border border-2 border-dark rounded-3">
       <div class="fond-clair-v2">
@@ -82,12 +84,15 @@ export function afficherUnAppareilPhoto(camera, panier) {
       </div>
     </div>`;
 
+  // affichage d'un appareil photo  
   let afficherElt = document.createElement('div');
   afficherElt.innerHTML = produit;
 
+  // affichage des objectifs
   let selectElt = selectionObjectif(camera);
   afficherElt.querySelector('#produit-selection-objectif').appendChild(selectElt);
-  
+
+  // validation pour le panier
   let ajouterAupanierBtn = afficherElt.querySelector('#ajouter-au-panier-btn');
   ajouterAupanierBtn.addEventListener('click', () => {
     if (selectElt.value >= 0) {

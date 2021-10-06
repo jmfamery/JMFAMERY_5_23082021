@@ -10,6 +10,7 @@ export function afficherPanier(panier, panierDetail, panierTotal) {
   }
 }
 
+// affichage que le panier est vide
 function afficherPanierVideDetail() {
   return `<div class="card-body text-center pb-0">
     <div class="fond-clair-v3 police2-gras">
@@ -22,6 +23,7 @@ function afficherPanierVideDetail() {
   </div>`
 }
 
+// affichage de la liste des appareils photos dans le panier
 function afficherPanierPleinDetail(panier) {
   let panierPleinDetail = "";
 
@@ -67,6 +69,7 @@ function afficherPanierPleinDetail(panier) {
   return panierPleinDetail;
 }
 
+// affichage du total du panier d'appareils photos
 function afficherPanierTotal(panier) {
   return `<div class="card-footer text-center border-top-0 pb-0">
     <div class="row g-3 py-2">
@@ -94,6 +97,7 @@ function afficherPanierTotal(panier) {
   </div>`;
 }
 
+// suppression d'un appareil photo dans le panier
 function clicsSupprimerUnAppareil(panier) {
   let poubelleAppareil = document.querySelectorAll(".poubelleappareil")
 
@@ -107,6 +111,7 @@ function clicsSupprimerUnAppareil(panier) {
   }
 }
 
+// suppression de tous les appareils photos dans le panier
 function clicsSupprimerTousAppareils(panier) {
   let viderPanier = document.querySelector("#viderpanier")
 
