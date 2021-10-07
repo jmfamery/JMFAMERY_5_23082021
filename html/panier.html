@@ -59,6 +59,13 @@
                   Panier
                 </a>
               </li>
+
+              <li class="nav-item" style="max-width:50px">
+                <div class="nav-link text-black text-center rounded-pill h-75 fond-clair-v1">
+                  <div class="compteur-panier">
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </nav>
@@ -92,16 +99,20 @@
                     <p>Produit</p>
                   </div>
 
-                  <div class="col-3">
+                  <div class="col-2">
                     <p>Accessoire</p>
+                  </div>
+
+                  <div class="col-2">
+                    <p>Prix unitaire</p>
                   </div>
 
                   <div class="col-2">
                     <p>Quantité</p>
                   </div>
 
-                  <div class="col-3">
-                    <p>Montant</p>
+                  <div class="col-2">
+                    <p>Montant total</p>
                   </div>
 
                   <div class="col-1">
@@ -181,6 +192,7 @@
   </script>
 
   <!-- Javascript -->
+  <script type="module" src="../js/controleurs/headerCtr.js"></script>
   <script type="module" src="../js/controleurs/panierCtr.js"></script>
   <script type="module" src="../js/controleurs/cordonneesCtr.js"></script>
 </body>

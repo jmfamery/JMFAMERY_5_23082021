@@ -35,15 +35,23 @@ function afficherPanierPleinDetail(panier) {
               <p>${appareil.name}</p>
             </div>
 
-            <div class="col-3">
+            <div class="col-2">
               <p>${appareil.lenses}</p>
+            </div>
+
+            <div class="col-2">
+              <p>${Intl.NumberFormat('fr-FR', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 0
+              }).format(appareil.price / 100)}
             </div>
 
             <div class="col-2">
               <p>${appareil.number}</p>
             </div>
 
-            <div class="col-3">
+            <div class="col-2">
               <p>${Intl.NumberFormat('fr-FR', {
                   style: 'currency',
                   currency: 'EUR',
@@ -71,9 +79,9 @@ function afficherPanierPleinDetail(panier) {
 
 // affichage du total du panier d'appareils photos
 function afficherPanierTotal(panier) {
-  return `<div class="card-footer text-center border-top-0 pb-0">
+  return `<div class="card-footer text-center border-top-0 fs-5 pb-0">
     <div class="row g-3 py-2">
-      <div class="col-6">
+      <div class="col-7">
         <div class="police2-normal">
           <button id="viderpanier" class="btn btn-dark">Supprimer le panier</button>
         </div>
@@ -83,7 +91,7 @@ function afficherPanierTotal(panier) {
         <p class="police2-gras">Total</p>
       </div>
 
-      <div class="col-3 pt-2">
+      <div class="col-2 pt-2">
         <p class="police2-gras">${Intl.NumberFormat('fr-FR', {
           style: 'currency',
           currency: 'EUR',

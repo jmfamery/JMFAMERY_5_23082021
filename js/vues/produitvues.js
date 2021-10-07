@@ -1,3 +1,5 @@
+import {compteurPanier} from "../vues/headerVues.js"
+
 // objectifs
 function selectionObjectif(camera) {
   let objectifElt = document.createElement('select');
@@ -121,6 +123,17 @@ export function afficherUnAppareilPhoto(camera, panier) {
         }else {
           alert(`Les ${quantites} appareils photo ${appareil.name}, objectif ${appareil.lenses} pour un montant de ${totalPrice} ont bien été ajoutés au panier.`);
         }
+
+        //nombre des appareils photos dans le panier
+        const infoPanierElt = document.querySelector(".compteur-panier")
+
+        let compteurProduit = 0;
+        for (let numeroId = 0; numeroId < panier.donnees.length; numeroId++) {
+            compteurProduit += panier.donnees[numeroId].number
+          };
+
+        compteurPanier(compteurProduit, infoPanierElt)
+        
       } else {
         alert("Veuillez saisir une quantité suppérieur à 0")
       }

@@ -40,7 +40,7 @@ function afficherCommandePleinDetail(commande) {
     commandePleinDetail += `<div class="card-body text-center pb-0">
         <div class="fond-clair-v3 police2-normal">
           <div class="row g-3">
-            <div class="col-4">
+            <div class="col-3">
               <p>${appareil.name}</p>
             </div>
 
@@ -49,10 +49,20 @@ function afficherCommandePleinDetail(commande) {
             </div>
 
             <div class="col-2">
+              <p>${Intl.NumberFormat('fr-FR', {
+                  style: 'currency',
+                  currency: 'EUR',
+                  minimumFractionDigits: 0
+                }).format(appareil.price / 100)}
+              </p>
+            </div>
+
+          
+            <div class="col-2">
               <p>${appareil.number}</p>
             </div>
 
-            <div class="col-3">
+            <div class="col-2">
               <p>${Intl.NumberFormat('fr-FR', {
                   style: 'currency',
                   currency: 'EUR',
@@ -69,17 +79,17 @@ function afficherCommandePleinDetail(commande) {
 
 // affichage du total de la commande d'appareils photos
 function afficherCommandeTotal(commande) {
-  return `<div class="card-footer text-center border-top-0 pb-0">
+  return `<div class="card-footer text-center border-top-0 fs-5 pb-0">
     <div class="police2-gras">
       <div class="row g-3">
-        <div class="col-7">
+        <div class="col-8">
         </div>
 
         <div class="col-2">
           <p>Total</p>
         </div>
 
-        <div class="col-3">
+        <div class="col-2">
           <p>${Intl.NumberFormat('fr-FR', {
               style: 'currency',
               currency: 'EUR',
