@@ -50,7 +50,7 @@ function afficherFormulaire(cordonnees) {
   <div class="card-footer text-center border-top-0 pb-0 my-3">
     <div class="row g-3">
       <div class="col-md-6">
-        <button id="vider" class="btn btn-dark" type="submit">Effacer les cordonnees</button>
+        <button id="vider" class="btn btn-dark" type="submit">Effacer les cordonnées</button>
       </div>
 
       <div class="col-md-6">

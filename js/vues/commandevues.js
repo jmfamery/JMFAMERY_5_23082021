@@ -25,7 +25,7 @@ function afficherCommandeVideDetail () {
     <div class="fond-clair-v3 police2-gras">
       <div class="row g-3">
         <div class="col-12">
-          <p class="fs-5">Pas de commande précédante</p>
+          <p class="fs-5">Pas de commande précédente</p>
         </div>
       </div>
     </div>

@@ -30,7 +30,7 @@ export class Cordonnees {
       const erreurs = [];
 
       if ((/\D{2,20}/.test(this.donnees.prenom)) == false) {
-        erreurs.push("Le prenom est mal saisi ! Il doit avoir entre 2 et 20 caratéress.")
+        erreurs.push("Le prénom est mal saisi ! Il doit avoir entre 2 et 20 caratéres.")
       }
 
       if ((/\D{2,20}/.test(this.donnees.nom)) == false) {  

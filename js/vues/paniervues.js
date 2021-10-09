@@ -113,7 +113,7 @@ function clicsSupprimerUnAppareil(panier) {
     poubelleAppareil[suppression].addEventListener('click', () => {
       let idPoubelleAppareil = panier.donnees[suppression]._id + panier.donnees[suppression].lenses_id;
       panier.supprimerUnProduit(idPoubelleAppareil)
-      alert("L'appareil a été supprimer")
+      alert("L'appareil photo a été supprimé")
       window.location.href = "panier.html"
     })
   }
